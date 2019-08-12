@@ -1,6 +1,6 @@
-package src.javaFxDriver;
+package javaFxDriver;
 
-import javaapplication16.Swarm;
+import pso.Swarm;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication16;
+package javaFxDriver;
 
-import javaapplication16.PsoConfigOptions;
+import javaFxDriver.PsoConfigOptions;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;

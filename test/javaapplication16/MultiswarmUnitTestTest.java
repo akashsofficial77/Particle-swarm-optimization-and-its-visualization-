@@ -5,10 +5,10 @@
  */
 package javaapplication16;
 
-import javaapplication16.LolFitnessFunction;
-import javaapplication16.LolFitnessFunction;
-import javaapplication16.MultiSwarm;
-import javaapplication16.MultiSwarm;
+import pso.LolFitnessFunction;
+import pso.LolFitnessFunction;
+import pso.MultiSwarm;
+import pso.MultiSwarm;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -50,7 +50,7 @@ public class MultiswarmUnitTestTest {
 
 		// Iterates 1000 times through the main loop and prints the result.
 		for (int i = 0; i < 1000; i++) {
-			multiswarm.mainLoop();
+			//multiswarm.mainLoop();
 		}
 
 		System.out.println("Best fitness found: " + multiswarm.getBestFitness() + "[" + multiswarm.getBestPosition()[0]

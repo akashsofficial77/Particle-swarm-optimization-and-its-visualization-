@@ -1,4 +1,4 @@
-package src.javaFxDriver;
+package javaFxDriver;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;

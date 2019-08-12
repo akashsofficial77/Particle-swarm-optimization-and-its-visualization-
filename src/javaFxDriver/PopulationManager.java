@@ -1,4 +1,4 @@
-package src.javaFxDriver;
+package javaFxDriver;
 
 import java.util.HashMap;
 
@@ -25,9 +25,9 @@ public class PopulationManager {
 		return this.activeDriver;
 	}
 	
-	public void update (float elapsedTime) {
+	public void update (float elapsedTime, int loop) {
 		if (this.activeDriver == null) return;
-		this.activeDriver.update(elapsedTime);
+		this.activeDriver.update(elapsedTime,loop);
 	}
 	
 	public void setC1 (int popIndex, float val) {

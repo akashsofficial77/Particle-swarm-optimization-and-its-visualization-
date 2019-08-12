@@ -1,11 +1,12 @@
-package src.javaFxDriver;
+package javaFxDriver;
 
 import java.util.ArrayList;
 
 import javafx.scene.Node;
-import javaapplication16.LolFitnessFunction;
-import src.javaFxDriver.PsoConfigOptions;
-import javaapplication16.Swarm;
+import pso.LolFitnessFunction;
+import javaFxDriver.PsoConfigOptions;
+import pso.MultiSwarm;
+import pso.Swarm;
 
 /*
  * Parent class for population drivers
@@ -75,6 +76,8 @@ public abstract class PopulationDriver {
 	
 	public abstract Node getUiNode ();
 	
-	public abstract void update (float elapsedTime);
+	public abstract void update (float elapsedTime, int loop);
+        
+       // public abstract MultiSwarm getMultiSwarm();
 	
 }

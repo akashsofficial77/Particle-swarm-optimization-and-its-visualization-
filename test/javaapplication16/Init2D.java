@@ -1,7 +1,7 @@
 package javaapplication16;
 import java.awt.Dimension;
-import javaapplication16.Constants;
-import javaapplication16.MultiSwarm;
+import pso.Constants;
+import pso.MultiSwarm;
 
 
 import javax.swing.JFrame;
