@@ -1,5 +1,8 @@
-package src.javaFxDriver;
+package javaFxDriver;
 
+import java.awt.Toolkit;
+import java.util.Timer;
+import java.util.TimerTask;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -12,6 +15,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
+import pso.MultiSwarm;
 
 
 public class Init extends Application {
@@ -20,8 +24,10 @@ public class Init extends Application {
 	private BorderPane mainBorderPane = new BorderPane();
 	private BorderPane activeGraphicsPane = new BorderPane();
 	private PopulationManager popMngr = new PopulationManager();
+        Basic3dDriver basic2D;
 	private boolean isFullscreen = false;
-
+        Toolkit toolkit;
+	Timer timer;
 	private void buildMainPane () {
 		
 	}
@@ -40,7 +46,8 @@ public class Init extends Application {
 		 */
 		int[] searchSpace = new int[]{900, 675, 255, 255, 255};
 		int[] initGoal = new int[]{255, 255, 255, 255, 255};
-		PopulationDriver basic2D = new Basic3dDriver(searchSpace, initGoal, -1, new int[100]);
+		 Basic3dDriver basic2D = new Basic3dDriver(searchSpace, initGoal, -1, new int[100]);
+                
 		this.popMngr.addDriver("basic2D", basic2D);
 		this.popMngr.setActiveDriver("basic2D");
 		
@@ -54,12 +61,18 @@ public class Init extends Application {
 		);
 
 		//---CREATE TIMER AND START---//
-		this.lastTime = System.nanoTime();
+                this.lastTime = System.nanoTime();
+                  toolkit = Toolkit.getDefaultToolkit();
+		 timer = new Timer();
+	        timer.schedule(new CrunchifyReminder(), 1000, // initial delay
+				1 * 1500);
+                 timer.schedule(new CrunchifyReminder2(), 500, // initial delay
+				1 * 500);// subsequent rate
 		AnimationTimer timer = new AnimationTimer() {
 			public void handle(long now) {
 				float elapsedTime = (float) ((now - lastTime) / 1000000.0);
 				lastTime = now;
-				popMngr.update(elapsedTime);
+				//popMngr.update(elapsedTime,0);
 			}
 		};
 		
@@ -92,6 +105,42 @@ public class Init extends Application {
 		});
 		
 	}
+        
+         class CrunchifyReminder extends TimerTask {
+		int loop=5;
+
+ 
+		public void run() {
+                    while(true){
+			if (loop < 5) {
+				//toolkit.beep();
+				float elapsedTime = 0;
+                                popMngr.update(elapsedTime,loop);
+				loop++;
+			} else {
+				loop=0;
+			}
+                    }
+		}
+                
+        }
+         
+         class CrunchifyReminder2 extends TimerTask {
+		int loop=0;
+
+ 
+		public void run() {
+			while(true){
+				//toolkit.beep();
+				float elapsedTime = 0;
+                                loop=-1;
+                                popMngr.update(elapsedTime,loop);
+				//loop++;
+			} 
+		}
+                
+        }
+           
 
 	public static void main (String[] args) {
 		launch(args);

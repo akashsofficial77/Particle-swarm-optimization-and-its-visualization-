@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication16;
+package pso;
 
 /**
  *
@@ -87,6 +87,12 @@ public class LolFitnessFunction implements FitnessFunction {
                     return -(x*x2);
                 }else if(x<0 && x3<0){
                     return -(x*x3);
+                }else if(x1<0 && x2<0){
+                    return -(x1*x2);
+                }else if(x1<0 && x3<0){
+                    return -(x1*x3);
+                }else if(x2<0 && x3<0){
+                    return -(x2*x3);
                 }
                 else if (armor < 0 && x<0) {
 			return -(armor*x);
@@ -108,8 +114,8 @@ public class LolFitnessFunction implements FitnessFunction {
 
 		
 		double cost = (health * 10) + (armor * 10)+(x*10)+(x1*10)+(x2*10)+(x3*10);
-        if (cost > 10000) {
-            return 10000 - cost;
+        if (cost > 4000) {
+            return 4000 - cost;
         } else {
         
             long fitness = health*500+armor*500+x*500+(x1*500)+(x2*500)+(x3*500);

@@ -1,4 +1,4 @@
-package src.javaFxDriver;
+package javaFxDriver;
 /*
  * Copyright (c) 2011, 2013 Oracle and/or its affiliates.
  * All rights reserved. Use is subject to license terms.

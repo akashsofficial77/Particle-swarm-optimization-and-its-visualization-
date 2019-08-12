@@ -1,4 +1,4 @@
-package src.javaFxDriver;
+package javaFxDriver;
 
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;

@@ -1,8 +1,11 @@
 
-package javaapplication16;
+package pso;
 
+import java.awt.Toolkit;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.TimerTask;
+import java.util.Timer;
 
 /**
  *
@@ -20,6 +23,9 @@ public class MultiSwarm {
 	private Random random = new Random();
 
 	private FitnessFunction fitnessFunction;
+        Toolkit toolkit;
+	Timer timer;
+        
 
 	public MultiSwarm(int numSwarms, int particlesPerSwarm, FitnessFunction fitnessFunction) {
 		this.fitnessFunction = fitnessFunction;
@@ -27,17 +33,44 @@ public class MultiSwarm {
 		for (int i = 0; i < numSwarms; i++) {
 			swarms[i] = new Swarm(particlesPerSwarm);
 		}
+                /* toolkit = Toolkit.getDefaultToolkit();
+		 timer = new Timer();
+	         timer.schedule(new CrunchifyReminder(), 1000, // initial delay
+				1 * 1500); // subsequent rate
+		*/
+                
+               
 	}
-
 
         public Swarm getSwarm(){
             return swarms[0];
         }
         
-	public void mainLoop() {
-            
-		for (Swarm swarm : swarms) {
-			for (Particle particle : swarm.getParticles()) {
+       /*  class CrunchifyReminder extends TimerTask {
+		int loop=0;
+
+ 
+		public void run() {
+			if (loop < 5) {
+				toolkit.beep();
+				float elapsedTime = 0;
+                                mainLoop(loop);
+				loop++;
+			} else {
+				toolkit.beep();
+				System.out.format("\nThat's it.. Done..!");
+				timer.cancel();
+			}
+		}
+                
+        }
+        */
+    
+        
+	public void mainLoop(int i) {
+                 if(i!=-1){
+		//for (Swarm swarm : swarms) {
+			for (Particle particle : swarms[i].getParticles()) {
 
 				long[] particleOldPosition = particle.getPosition().clone();
 
@@ -50,13 +83,13 @@ public class MultiSwarm {
 					particle.setBestFitness(particle.getFitness());
 					particle.setBestPosition(particleOldPosition);
 
-					if (particle.getFitness() > swarm.getBestFitness()) {
-						swarm.setBestFitness(particle.getFitness());
-						swarm.setBestPosition(particleOldPosition);
+					if (particle.getFitness() > swarms[i].getBestFitness()) {
+						swarms[i].setBestFitness(particle.getFitness());
+						swarms[i].setBestPosition(particleOldPosition);
 
-						if (swarm.getBestFitness() > bestFitness) {
-							bestFitness = swarm.getBestFitness();
-							bestPosition = swarm.getBestPosition().clone();
+						if (swarms[i].getBestFitness() > bestFitness) {
+							bestFitness = swarms[i].getBestFitness();
+							bestPosition = swarms[i].getBestPosition().clone();
 						}
 
 					}
@@ -80,31 +113,24 @@ public class MultiSwarm {
                                 position[4] += speed[4];
                                 position[5] += speed[5];
                 
-                                  //System.out.println(position[0]+" + "+x+" + "+speed[0]);
-                                  //System.out.println(position[0]+" + "+position2[0]+" + "+speed[0]);
-                                  // Updates the particle speed.
-                                  speed[0] = getNewParticleSpeedForIndex(particle, swarm, 0);
-                                  speed[1] = getNewParticleSpeedForIndex(particle, swarm, 1);
-                                  speed[2] = getNewParticleSpeedForIndex(particle, swarm, 2);
-                                  speed[3] = getNewParticleSpeedForIndex(particle, swarm, 3);
-                                  speed[4] = getNewParticleSpeedForIndex(particle, swarm, 4);
-                                  speed[5] = getNewParticleSpeedForIndex(particle, swarm, 5);
+                                  speed[0] = getNewParticleSpeedForIndex(particle, swarms[i], 0);
+                                  speed[1] = getNewParticleSpeedForIndex(particle, swarms[i], 1);
+                                  speed[2] = getNewParticleSpeedForIndex(particle, swarms[i], 2);
+                                  speed[3] = getNewParticleSpeedForIndex(particle, swarms[i], 3);
+                                  speed[4] = getNewParticleSpeedForIndex(particle, swarms[i], 4);
+                                  speed[5] = getNewParticleSpeedForIndex(particle, swarms[i], 5);
  
 
 				
 				
 			}
-		}
+                 }
+		//}
 	}
 
 	
 	private int getNewParticleSpeedForIndex(Particle particle, Swarm swarm, int index) {
-		
-		//System.out.println(particle.getSpeed()[index]);
-		
-		
-		
-		
+
 		return (int) ((Constants.INERTIA_FACTOR * particle.getSpeed()[index])
 				+ (randomizePercentage(Constants.COGNITIVE_WEIGHT)
 						* (particle.getBestPosition()[index] - particle.getPosition()[index]))

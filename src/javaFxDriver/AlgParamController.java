@@ -1,4 +1,4 @@
-package src.javaFxDriver;
+package javaFxDriver;
 
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;

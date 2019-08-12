@@ -1,15 +1,14 @@
-package src.javaFxDriver;
+package javaFxDriver;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import javaapplication16.LolFitnessFunction;
-//import javaapplication16.PsoConfigOptions;
-import javaapplication16.Particle;
-import javaapplication16.Swarm;
-import javaapplication16.MultiSwarm;
+import pso.LolFitnessFunction;
+import pso.Particle;
+import pso.Swarm;
+import pso.MultiSwarm;
 //import src.pso.Position;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -53,7 +52,7 @@ public class Basic3dDriver extends PopulationDriver {
 	
 	public Basic3dDriver(int[] searchSpaceDimensions, int[] initGoal, int numPopulations, int[] popSizes) {
 		super(searchSpaceDimensions, initGoal, numPopulations, popSizes);
-	        multiswarm = new MultiSwarm(5, 1000, new LolFitnessFunction());
+	        multiswarm = new MultiSwarm(5, 10000, new LolFitnessFunction());
 		//---swarm setup---//
 		this.paramList = new String[]{"X", "Y", "Z", "Red", "Green", "Blue", "Alpha", "Beta", "Gamma"};
 		this.numDimensions = 9; //TODO: Set dynamically
@@ -77,7 +76,11 @@ public class Basic3dDriver extends PopulationDriver {
                 root.getChildren().add(world);
                 this.buildCamera();
 		//this.buildBoundries(); 
-                multiswarm.mainLoop();
+              /*  int i = 5;
+                while(i>0){
+                multiswarm.mainLoop(i);
+                i--;
+                }*/
                 this.buildParticles();  
                 this.scene = new SubScene(root, width, height, true, SceneAntialiasing.BALANCED);
 		this.scene.setFill(Color.color(0.85, 0.85, 1.0));
@@ -87,6 +90,10 @@ public class Basic3dDriver extends PopulationDriver {
 		
 		
 	}
+    
+        public MultiSwarm getMultiSwarm(){
+            return multiswarm;
+        }
 
 	private void buildCamera() {
 		root.getChildren().add(cameraXform);
@@ -134,11 +141,12 @@ public class Basic3dDriver extends PopulationDriver {
 	}
 
 	@Override
-	public void update (float elapsedTime) {
+	public void update (float elapsedTime, int loop) {
                //int totParticleCnt = 0;
              //  System.out.println("update method called");
 		//for (Swarm p : populations) {
-			multiswarm.mainLoop();
+                        System.out.println("update method called");
+			multiswarm.mainLoop(loop);
 			
 			for (int i = 0; i<p.getParticles().length; i++) {
 				Particle particle = p.getParticles()[i];
@@ -149,7 +157,8 @@ public class Basic3dDriver extends PopulationDriver {
 				cube.translate(particle.getPosition()[0], particle.getPosition()[1], particle.getPosition()[2]);
 				//---SET COLOR---//
 				
-			}
+			
+                        }
 			
 			//totParticleCnt += p.getParticles().size();
 		//}

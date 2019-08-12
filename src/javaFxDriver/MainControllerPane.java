@@ -1,4 +1,4 @@
-package src.javaFxDriver;
+package javaFxDriver;
 
 import java.util.ArrayList;
 
