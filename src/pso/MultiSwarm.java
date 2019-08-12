@@ -67,15 +67,15 @@ public class MultiSwarm {
         */
     
         
-	public void mainLoop(int i) {
-                 if(i!=-1){
+	public void mainLoop(int i,int maxim) {
+               
 		//for (Swarm swarm : swarms) {
 			for (Particle particle : swarms[i].getParticles()) {
 
 				long[] particleOldPosition = particle.getPosition().clone();
 
 				// Calculate the particle fitness.
-				particle.setFitness(fitnessFunction.getFitness(particleOldPosition));
+				particle.setFitness(fitnessFunction.getFitness(particleOldPosition,maxim));
 
 				// Check if a new best position has been found for the particle
 				// itself, within the swarm and the multiswarm.
@@ -119,11 +119,11 @@ public class MultiSwarm {
                                   speed[3] = getNewParticleSpeedForIndex(particle, swarms[i], 3);
                                   speed[4] = getNewParticleSpeedForIndex(particle, swarms[i], 4);
                                   speed[5] = getNewParticleSpeedForIndex(particle, swarms[i], 5);
- 
+                                   System.out.println("main loop print SWARM"+i);
 
 				
 				
-			}
+			
                  }
 		//}
 	}
