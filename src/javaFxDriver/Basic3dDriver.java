@@ -52,7 +52,7 @@ public class Basic3dDriver extends PopulationDriver {
 	
 	public Basic3dDriver(int[] searchSpaceDimensions, int[] initGoal, int numPopulations, int[] popSizes) {
 		super(searchSpaceDimensions, initGoal, numPopulations, popSizes);
-	        multiswarm = new MultiSwarm(5, 10000, new LolFitnessFunction());
+	        multiswarm = new MultiSwarm(5, 100, new LolFitnessFunction());
 		//---swarm setup---//
 		this.paramList = new String[]{"X", "Y", "Z", "Red", "Green", "Blue", "Alpha", "Beta", "Gamma"};
 		this.numDimensions = 9; //TODO: Set dynamically
@@ -141,23 +141,26 @@ public class Basic3dDriver extends PopulationDriver {
 	}
 
 	@Override
-	public void update (float elapsedTime, int loop) {
+	public void update (float elapsedTime, int loop, int maxim) {
                //int totParticleCnt = 0;
              //  System.out.println("update method called");
 		//for (Swarm p : populations) {
                         System.out.println("update method called");
-			multiswarm.mainLoop(loop);
-			
+                        if(loop!=-1){
+			multiswarm.mainLoop(loop,maxim);
+                        } else{
 			for (int i = 0; i<p.getParticles().length; i++) {
 				Particle particle = p.getParticles()[i];
 				Cube cube = particles.get(i);
 				//int[] position = particle.getPosition().getVector();
 				//---SET POSITION---//
-                                System.out.println(particle.getPosition()[0]+","+particle.getPosition()[1]+","+particle.getPosition()[2]+","+particle.getPosition()[3]+","+particle.getPosition()[4]+","+particle.getPosition()[5]);
+                                System.out.println(loop +"        "+particle.getPosition()[0]+","+particle.getPosition()[1]+","+particle.getPosition()[2]+","+particle.getPosition()[3]+","+particle.getPosition()[4]+","+particle.getPosition()[5]);
 				cube.translate(particle.getPosition()[0], particle.getPosition()[1], particle.getPosition()[2]);
 				//---SET COLOR---//
+                                System.out.println("translate");
 				
 			
+                        }
                         }
 			
 			//totParticleCnt += p.getParticles().size();

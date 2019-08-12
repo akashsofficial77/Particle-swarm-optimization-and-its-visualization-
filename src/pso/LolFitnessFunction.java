@@ -13,7 +13,7 @@ public class LolFitnessFunction implements FitnessFunction {
 
 
 	@Override
-	public double getFitness(long[] particlePosition) {
+	public double getFitness(long[] particlePosition,int maxim) {
 
 		long health = particlePosition[0];
 		long armor = particlePosition[1];
@@ -114,8 +114,8 @@ public class LolFitnessFunction implements FitnessFunction {
 
 		
 		double cost = (health * 10) + (armor * 10)+(x*10)+(x1*10)+(x2*10)+(x3*10);
-        if (cost > 4000) {
-            return 4000 - cost;
+        if (cost > maxim) {
+            return maxim - cost;
         } else {
         
             long fitness = health*500+armor*500+x*500+(x1*500)+(x2*500)+(x3*500);

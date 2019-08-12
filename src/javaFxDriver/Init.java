@@ -20,6 +20,8 @@ import pso.MultiSwarm;
 
 public class Init extends Application {
 	
+    
+        int maxim=5000;
 	private long lastTime;
 	private BorderPane mainBorderPane = new BorderPane();
 	private BorderPane activeGraphicsPane = new BorderPane();
@@ -46,7 +48,7 @@ public class Init extends Application {
 		 */
 		int[] searchSpace = new int[]{900, 675, 255, 255, 255};
 		int[] initGoal = new int[]{255, 255, 255, 255, 255};
-		 Basic3dDriver basic2D = new Basic3dDriver(searchSpace, initGoal, -1, new int[100]);
+		 PopulationDriver basic2D = new Basic3dDriver(searchSpace, initGoal, -1, new int[100]);
                 
 		this.popMngr.addDriver("basic2D", basic2D);
 		this.popMngr.setActiveDriver("basic2D");
@@ -64,11 +66,11 @@ public class Init extends Application {
                 this.lastTime = System.nanoTime();
                   toolkit = Toolkit.getDefaultToolkit();
 		 timer = new Timer();
-	        timer.schedule(new CrunchifyReminder(), 1000, // initial delay
-				1 * 1500);
-                 timer.schedule(new CrunchifyReminder2(), 500, // initial delay
-				1 * 500);// subsequent rate
-		AnimationTimer timer = new AnimationTimer() {
+	        timer.schedule(new CrunchifyReminder(maxim,popMngr), 1000, // initial delay
+				1 * 1000);
+            //     timer.schedule(new CrunchifyReminder2(), 500, // initial delay
+		//		1 * 500);// subsequent rate
+		/*AnimationTimer timer = new AnimationTimer() {
 			public void handle(long now) {
 				float elapsedTime = (float) ((now - lastTime) / 1000000.0);
 				lastTime = now;
@@ -80,7 +82,7 @@ public class Init extends Application {
 		//---CONTROLLER PANEL ON THE LEFT---//
 		MainControllerPane mpc = new MainControllerPane(this.popMngr, timer, this.activeGraphicsPane);
 		
-		mainBorderPane.setLeft(mpc.getPane());
+		mainBorderPane.setLeft(mpc.getPane());*/
 		mainBorderPane.setCenter(this.activeGraphicsPane);
 		scene.setRoot(mainBorderPane);
 		stage.show();
@@ -103,17 +105,27 @@ public class Init extends Application {
 				scene.setRoot(vb);
 			}	
 		});
+                
+            
 		
 	}
         
-         class CrunchifyReminder extends TimerTask {
-		int loop=5;
+        
+     
 
- 
-		public void run() {
+
+
+        
+
+
+		/*public void run() {
                     while(true){
 			if (loop < 5) {
 				//toolkit.beep();
+                                synchronized(CrunchifyReminder2.cr2) 
+                               { 
+                                 CrunchifyReminder2.cr2.notify(); 
+                               } 
 				float elapsedTime = 0;
                                 popMngr.update(elapsedTime,loop);
 				loop++;
@@ -121,25 +133,12 @@ public class Init extends Application {
 				loop=0;
 			}
                     }
-		}
+		}*/
                 
-        }
-         
-         class CrunchifyReminder2 extends TimerTask {
-		int loop=0;
-
+                
+                
  
-		public void run() {
-			while(true){
-				//toolkit.beep();
-				float elapsedTime = 0;
-                                loop=-1;
-                                popMngr.update(elapsedTime,loop);
-				//loop++;
-			} 
-		}
-                
-        }
+
            
 
 	public static void main (String[] args) {

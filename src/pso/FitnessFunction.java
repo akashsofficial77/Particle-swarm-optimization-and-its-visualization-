@@ -8,6 +8,6 @@ package pso;
 public interface FitnessFunction {
 
 
-	public double getFitness(long[] particlePosition);
+	public double getFitness(long[] particlePosition, int maxim);
 
 }

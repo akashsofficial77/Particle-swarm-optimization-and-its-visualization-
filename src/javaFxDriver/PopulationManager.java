@@ -25,9 +25,9 @@ public class PopulationManager {
 		return this.activeDriver;
 	}
 	
-	public void update (float elapsedTime, int loop) {
+	public  void update (float elapsedTime, int loop, int maxim) {
 		if (this.activeDriver == null) return;
-		this.activeDriver.update(elapsedTime,loop);
+		this.activeDriver.update(elapsedTime,loop, maxim);
 	}
 	
 	public void setC1 (int popIndex, float val) {
