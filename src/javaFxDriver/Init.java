@@ -66,8 +66,9 @@ public class Init extends Application {
                 this.lastTime = System.nanoTime();
                   toolkit = Toolkit.getDefaultToolkit();
 		 timer = new Timer();
-	        timer.schedule(new CrunchifyReminder(maxim,popMngr), 1000, // initial delay
-				1 * 1000);
+                 System.out.println("********************************************called once");
+	        timer.schedule(new CrunchifyReminder(maxim,popMngr), 0, // initial delay
+				50);
             //     timer.schedule(new CrunchifyReminder2(), 500, // initial delay
 		//		1 * 500);// subsequent rate
 		AnimationTimer timer = new AnimationTimer() {
@@ -110,34 +111,6 @@ public class Init extends Application {
 		
 	}
         
-        
-     
-
-
-
-        
-
-
-		/*public void run() {
-                    while(true){
-			if (loop < 5) {
-				//toolkit.beep();
-                                synchronized(CrunchifyReminder2.cr2) 
-                               { 
-                                 CrunchifyReminder2.cr2.notify(); 
-                               } 
-				float elapsedTime = 0;
-                                popMngr.update(elapsedTime,loop);
-				loop++;
-			} else {
-				loop=0;
-			}
-                    }
-		}*/
-                
-                
-                
- 
 
            
 
