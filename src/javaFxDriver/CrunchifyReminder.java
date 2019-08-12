@@ -18,6 +18,7 @@ import java.util.TimerTask;
            {
                this.maxim=maxim;
                this.popMgr=pogMgr;
+               t2.start();
            }
 		int loop=0;
               //  private PopulationManager popMngr = new PopulationManager();
@@ -60,8 +61,19 @@ import java.util.TimerTask;
 @Override    
 // run method of timer task
 public void run() {
-    t1.start();
-    t2.start();
+    
+    
+   int loop=0;
+       System.out.println("swarm movement loop");
+                          float elapsedTime = 0;
+                          if (loop>=0){
+                          popMgr.update(elapsedTime,loop,maxim);
+                          loop--;
+                          }
+                          else{
+                            loop=0;  
+                          }
+    
     
 }
        }

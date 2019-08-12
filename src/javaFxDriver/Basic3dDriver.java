@@ -52,7 +52,7 @@ public class Basic3dDriver extends PopulationDriver {
 	
 	public Basic3dDriver(int[] searchSpaceDimensions, int[] initGoal, int numPopulations, int[] popSizes) {
 		super(searchSpaceDimensions, initGoal, numPopulations, popSizes);
-	        multiswarm = new MultiSwarm(1, 1000, new LolFitnessFunction());
+	        multiswarm = new MultiSwarm(5, 1000, new LolFitnessFunction());
 		//---swarm setup---//
 		this.paramList = new String[]{"X", "Y", "Z", "Red", "Green", "Blue", "Alpha", "Beta", "Gamma"};
 		this.numDimensions = 9; //TODO: Set dynamically
@@ -62,7 +62,7 @@ public class Basic3dDriver extends PopulationDriver {
 		
 		//this.fitnessFunction = new FitnessDistance(new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0});
 		
-		//---POPULATION SETUP---//
+		/*//---POPULATION SETUP---//
 		for (int i = 0; i < this.numPopulations; i++) {
 			PsoConfigOptions options = new PsoConfigOptions();
 			options.c1 = 0.006f;
@@ -72,7 +72,7 @@ public class Basic3dDriver extends PopulationDriver {
 			options.population = p;
 			this.opts.add(options);
 			this.populations.add(p);
-		}
+		}*/
                 root.getChildren().add(world);
                 this.buildCamera();
 		//this.buildBoundries(); 
@@ -111,7 +111,7 @@ public class Basic3dDriver extends PopulationDriver {
 
 
 	private void buildParticles () {
-		//for (Swarm p : populations) {
+	//	for (Swarm p : populations) {
                   
 			for (Particle particle : p.getParticles()) {
 				Color color = Color.color(
@@ -144,7 +144,7 @@ public class Basic3dDriver extends PopulationDriver {
 	public void update (float elapsedTime, int loop, int maxim) {
                //int totParticleCnt = 0;
              //  System.out.println("update method called");
-		//for (Swarm p : populations) {
+	//	for (Swarm p : populations) {
                         System.out.println("update method called");
                         if(loop!=-1){
 			multiswarm.mainLoop(loop,maxim);
