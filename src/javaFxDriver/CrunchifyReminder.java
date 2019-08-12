@@ -17,9 +17,9 @@ import java.util.TimerTask;
            CrunchifyReminder(int maxim, PopulationManager pogMgr)
            {
                this.maxim=maxim;
-               this.popMgr=popMgr;
+               this.popMgr=pogMgr;
            }
-		int loop=5;
+		int loop=0;
               //  private PopulationManager popMngr = new PopulationManager();
 
 
@@ -35,7 +35,7 @@ import java.util.TimerTask;
                           loop--;
                           }
                           else{
-                            loop=5;  
+                            loop=0;  
                           }
                          
                         }

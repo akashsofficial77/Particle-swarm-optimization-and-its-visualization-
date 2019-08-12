@@ -48,7 +48,7 @@ public class Init extends Application {
 		 */
 		int[] searchSpace = new int[]{900, 675, 255, 255, 255};
 		int[] initGoal = new int[]{255, 255, 255, 255, 255};
-		 PopulationDriver basic2D = new Basic3dDriver(searchSpace, initGoal, -1, new int[100]);
+		PopulationDriver basic2D = new Basic3dDriver(searchSpace, initGoal, -1, new int[100]);
                 
 		this.popMngr.addDriver("basic2D", basic2D);
 		this.popMngr.setActiveDriver("basic2D");
@@ -70,11 +70,11 @@ public class Init extends Application {
 				1 * 1000);
             //     timer.schedule(new CrunchifyReminder2(), 500, // initial delay
 		//		1 * 500);// subsequent rate
-		/*AnimationTimer timer = new AnimationTimer() {
+		AnimationTimer timer = new AnimationTimer() {
 			public void handle(long now) {
 				float elapsedTime = (float) ((now - lastTime) / 1000000.0);
 				lastTime = now;
-				//popMngr.update(elapsedTime,0);
+				//popMngr.update(elapsedTime,0,maxim);
 			}
 		};
 		
@@ -82,7 +82,7 @@ public class Init extends Application {
 		//---CONTROLLER PANEL ON THE LEFT---//
 		MainControllerPane mpc = new MainControllerPane(this.popMngr, timer, this.activeGraphicsPane);
 		
-		mainBorderPane.setLeft(mpc.getPane());*/
+		mainBorderPane.setLeft(mpc.getPane());
 		mainBorderPane.setCenter(this.activeGraphicsPane);
 		scene.setRoot(mainBorderPane);
 		stage.show();
@@ -99,7 +99,7 @@ public class Init extends Application {
 					vb.getChildren().add(popMngr.getActiveDriver().getUiNode());
 				}
 				else {
-					mpc.rebuildPane();
+					//mpc.rebuildPane();
 					vb.getChildren().add(mainBorderPane);
 				}
 				scene.setRoot(vb);

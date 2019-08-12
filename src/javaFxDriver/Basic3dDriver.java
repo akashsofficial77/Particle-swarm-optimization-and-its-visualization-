@@ -52,7 +52,7 @@ public class Basic3dDriver extends PopulationDriver {
 	
 	public Basic3dDriver(int[] searchSpaceDimensions, int[] initGoal, int numPopulations, int[] popSizes) {
 		super(searchSpaceDimensions, initGoal, numPopulations, popSizes);
-	        multiswarm = new MultiSwarm(5, 100, new LolFitnessFunction());
+	        multiswarm = new MultiSwarm(1, 1000, new LolFitnessFunction());
 		//---swarm setup---//
 		this.paramList = new String[]{"X", "Y", "Z", "Red", "Green", "Blue", "Alpha", "Beta", "Gamma"};
 		this.numDimensions = 9; //TODO: Set dynamically
