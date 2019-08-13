@@ -113,14 +113,14 @@ public class Basic3dDriver extends PopulationDriver {
 	private void buildParticles () {
 		for (Swarm p : ss) {
                    
-                    System.out.println( "Color"+  sColor);
-                  System.out.println("****************************"+p);
+                    //System.out.println( "Color"+  sColor);
+                  //System.out.println("****************************"+p);
 			for (Particle particle : p.getParticles()) {
-                            System.out.println("****************************"+particle);
+                           // System.out.println("****************************"+particle);
 				Color color = Color.color(
-					sColor/10,
-					 sColor/10,
-					sColor/10
+					1,
+					 1,
+					1
 				);
 				Cube box = new Cube(this.particleSize, this.particleSize, this.particleSize, color, color);
 				box.translate(

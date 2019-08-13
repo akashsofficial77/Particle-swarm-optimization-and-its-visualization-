@@ -68,7 +68,7 @@ public class Init extends Application {
 		 timer = new Timer();
                  System.out.println("********************************************called once");
 	        timer.schedule(new CrunchifyReminder(maxim,popMngr), 0, // initial delay
-				50);
+				200);
             //     timer.schedule(new CrunchifyReminder2(), 500, // initial delay
 		//		1 * 500);// subsequent rate
 		AnimationTimer timer = new AnimationTimer() {
