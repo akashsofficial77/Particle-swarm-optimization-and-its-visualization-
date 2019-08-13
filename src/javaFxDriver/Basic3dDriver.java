@@ -21,7 +21,7 @@ import javafx.scene.SceneAntialiasing;
 import javax.swing.Timer;
 
 public class Basic3dDriver extends PopulationDriver {
-
+         int sColor=1;
 	private Group root = new Group();
 	private Group boundryGroup = new Group();
 	private Xform world = new Xform();
@@ -48,7 +48,7 @@ public class Basic3dDriver extends PopulationDriver {
 	private double mouseDeltaY;
 	private LolFitnessFunction fitnessFunction = new LolFitnessFunction();
          MultiSwarm multiswarm;
-        private Swarm p;
+        private Swarm[] ss;
 	
 	public Basic3dDriver(int[] searchSpaceDimensions, int[] initGoal, int numPopulations, int[] popSizes) {
 		super(searchSpaceDimensions, initGoal, numPopulations, popSizes);
@@ -58,7 +58,7 @@ public class Basic3dDriver extends PopulationDriver {
 		this.numDimensions = 9; //TODO: Set dynamically
 		this.paramMult = new double[this.numDimensions];
 		Arrays.fill(this.paramMult, 1);
-		p = multiswarm.getSwarm();
+		ss= multiswarm.getSwarm();
 		
 		//this.fitnessFunction = new FitnessDistance(new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0});
 		
@@ -111,13 +111,16 @@ public class Basic3dDriver extends PopulationDriver {
 
 
 	private void buildParticles () {
-	//	for (Swarm p : populations) {
-                  
+		for (Swarm p : ss) {
+                   
+                    System.out.println( "Color"+  sColor);
+                  System.out.println("****************************"+p);
 			for (Particle particle : p.getParticles()) {
+                            System.out.println("****************************"+particle);
 				Color color = Color.color(
-					1,
-					 1,
-					1
+					sColor/10,
+					 sColor/10,
+					sColor/10
 				);
 				Cube box = new Cube(this.particleSize, this.particleSize, this.particleSize, color, color);
 				box.translate(
@@ -127,13 +130,15 @@ public class Basic3dDriver extends PopulationDriver {
 				);
 				particles.add(box);
 			}
-		//}
+                             sColor++;
+		}
+           
 	
 		for (Cube particle : particles) {
 			this.particleGroup.getChildren().addAll(particle.getBox());
 		}
 		this.world.getChildren().addAll(this.particleGroup);
-	//}
+
         }
 
 	private int getPosNeg () {
@@ -141,30 +146,52 @@ public class Basic3dDriver extends PopulationDriver {
 	}
 
 	@Override
-	public void update (float elapsedTime, int loop, int maxim) {
+	public void update (float elapsedTime,int flag, int maxim) {
                //int totParticleCnt = 0;
              //  System.out.println("update method called");
-	//	for (Swarm p : populations) {
-                        System.out.println("update method called");
-                        if(loop!=-1){
-			multiswarm.mainLoop(loop,maxim);
-                        } else{
-			for (int i = 0; i<p.getParticles().length; i++) {
+                if(flag!=0){
+			multiswarm.mainLoop(maxim);
+                        } 
+                else{
+                    int totParticleCnt = 0;
+		for (Swarm p : ss) {
+                        //System.out.println("Swarm"+p);
+                        
+                    /*    for (int i = 0; i<p.getParticles().length; i++) {
+                            
 				Particle particle = p.getParticles()[i];
+                                System.out.println(p.getSNumber()  +"  "+p);
 				Cube cube = particles.get(i);
 				//int[] position = particle.getPosition().getVector();
 				//---SET POSITION---//
-                                System.out.println(loop +"        "+particle.getPosition()[0]+","+particle.getPosition()[1]+","+particle.getPosition()[2]+","+particle.getPosition()[3]+","+particle.getPosition()[4]+","+particle.getPosition()[5]);
+                                //System.out.println(flag +"        "+particle.getPosition()[0]+","+particle.getPosition()[1]+","+particle.getPosition()[2]+","+particle.getPosition()[3]+","+particle.getPosition()[4]+","+particle.getPosition()[5]);
 				cube.translate(particle.getPosition()[0], particle.getPosition()[1], particle.getPosition()[2]);
 				//---SET COLOR---//
-                                System.out.println("translate");
+                                //System.out.println("translate");
 				
 			
-                        }
+                            }
+                        
+                    */    
+                        
+                     for (int i = totParticleCnt; i < totParticleCnt + p.getParticles().length; i++) {
+				Particle particle = p.getParticles()[(i - totParticleCnt)];
+				Cube cube = particles.get(i);
+				//int[] position = particle.getPosition().getVector();
+				//---SET POSITION---//
+				cube.translate(particle.getPosition()[0], particle.getPosition()[1], particle.getPosition()[2]);
+				//---SET COLOR---//
+				
+			}   
+                        
+                        totParticleCnt += p.getParticles().length;
+                        
+                        
+                        
                         }
 			
-			//totParticleCnt += p.getParticles().size();
-		//}
+			
+		}
         }
 		
 	
