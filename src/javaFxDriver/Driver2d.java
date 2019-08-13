@@ -30,7 +30,7 @@ import pso.Constants;
 public class Driver2d extends JPanel {
 
 	private MultiSwarm ms;
-        private Swarm p;
+        private Swarm[] p;
 	private Timer timer;
 	private int animationStepTime = 33;
 	//private IFitness fitnessFunction = new FitnessDistance(255, 255);
@@ -80,7 +80,7 @@ public class Driver2d extends JPanel {
 		
 		g2d.setColor(new Color(50, 50, 50));
 		g2d.setStroke(new BasicStroke(2));
-		for (Particle particle : p.getParticles()) {
+		for (Particle particle : p[0].getParticles()) {
                     int healthPos = (int) particle.getPosition()[0];
                     //healthPos= Math.abs(healthPos/1000);
                     int armourPos = (int) particle.getPosition()[1];

@@ -10,8 +10,8 @@ import java.util.Random;
  * @author Aditya
  */
 public class Swarm {
-
-	
+        static int count=0;
+	int  sNumber;
 	private Particle[] particles;
         private ArrayList<Particle> particleList = new ArrayList<Particle>();
        // ArrayList<Particle> particlesList;
@@ -26,6 +26,8 @@ public class Swarm {
 
 
 	public Swarm(int numParticles) {
+            
+            sNumber =count++;
         particles = new Particle[numParticles];
         for (int i = 0; i < numParticles; i++) {
             long[] initialParticlePosition = { random.nextInt(Constants.PARTICLE_UPPER_BOUND),
@@ -36,7 +38,11 @@ public class Swarm {
         }
     }
 
-
+        public int getSNumber()
+        {
+            return sNumber;
+        }
+        
 	public Particle[] getParticles() {
 		return particles;
 	}

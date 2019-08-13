@@ -76,7 +76,7 @@ public abstract class PopulationDriver {
 	
 	public abstract Node getUiNode ();
 	
-	public  abstract void update (float elapsedTime, int loop,int maxim);
+	public  abstract void update (float elapsedTime, int flag,int maxim);
         
        // public abstract MultiSwarm getMultiSwarm();
 	

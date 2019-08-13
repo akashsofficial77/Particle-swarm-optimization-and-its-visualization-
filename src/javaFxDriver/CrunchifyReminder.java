@@ -13,6 +13,7 @@ import java.util.TimerTask;
  */
        public  class CrunchifyReminder extends TimerTask {
            int maxim;
+           int flag;
            PopulationManager popMgr;
            CrunchifyReminder(int maxim, PopulationManager pogMgr)
            {
@@ -20,39 +21,30 @@ import java.util.TimerTask;
                this.popMgr=pogMgr;
                t2.start();
            }
-		int loop=0;
+		//int loop=0;
               //  private PopulationManager popMngr = new PopulationManager();
 
-
+/*
                  Thread t1 = new Thread(){
                       public void run(){
                           
                           while(true){
                           //toolkit.beep();
-                          System.out.println("swarm movement loop");
-                          float elapsedTime = 0;
-                          if (loop>=0){
-                          popMgr.update(elapsedTime,loop,maxim);
-                          loop--;
-                          }
-                          else{
-                            loop=0;  
-                          }
                          
                         }
                       }
                       
                   };
-
+*/
                                 Thread t2 = new Thread(){
                                 public void run(){
                                 while(true){
 				//toolkit.beep();
                                 
-                                System.out.println("cube movement loop");
+                               // System.out.println("cube movement loop");
 				float elapsedTime = 0;
-                                loop=-1;
-                                popMgr.update(elapsedTime,loop, maxim);
+                                flag=1;
+                                popMgr.update(elapsedTime, flag, maxim);
 				//loop++;
 			}           
      }
@@ -63,16 +55,17 @@ import java.util.TimerTask;
 public void run() {
     
     
-   int loop=0;
-       System.out.println("swarm movement loop");
+    //System.out.println("swarm movement loop");
                           float elapsedTime = 0;
-                          if (loop>=0){
-                          popMgr.update(elapsedTime,loop,maxim);
-                          loop--;
-                          }
-                          else{
-                            loop=0;  
-                          }
+                          //if (loop>=0){
+                          flag=0;
+                          popMgr.update(elapsedTime,flag,maxim);
+                          //loop--;
+                         // }
+                         // else{
+                           // loop=0;  
+                         // }
+                         
     
     
 }
