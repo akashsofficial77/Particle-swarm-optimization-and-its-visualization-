@@ -43,7 +43,7 @@ import java.util.TimerTask;
                                 
                                // System.out.println("cube movement loop");
 				float elapsedTime = 0;
-                                flag=1;
+                                flag=0;
                                 popMgr.update(elapsedTime, flag, maxim);
 				//loop++;
 			}           
@@ -58,7 +58,7 @@ public void run() {
     //System.out.println("swarm movement loop");
                           float elapsedTime = 0;
                           //if (loop>=0){
-                          flag=0;
+                          flag=1;
                           popMgr.update(elapsedTime,flag,maxim);
                           //loop--;
                          // }
