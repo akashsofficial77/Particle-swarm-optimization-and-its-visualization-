@@ -46,13 +46,25 @@ public class Basic3dDriver extends PopulationDriver {
 	private double mouseOldY;
 	private double mouseDeltaX;
 	private double mouseDeltaY;
+        private int noSwarms;
+        private int noParticles;
+        private double inertiaFactor;
+        private double cw;
+        private double sw;
+        private double gw;
 	private LolFitnessFunction fitnessFunction = new LolFitnessFunction();
          MultiSwarm multiswarm;
         private Swarm[] ss;
 	
-	public Basic3dDriver(int[] searchSpaceDimensions, int[] initGoal, int numPopulations, int[] popSizes) {
+	public Basic3dDriver(int[] searchSpaceDimensions, int[] initGoal, int numPopulations, int[] popSizes, int noSwarms, int noParticle,double inertiaFactor, double cw, double sw, double gw) {
 		super(searchSpaceDimensions, initGoal, numPopulations, popSizes);
-	        multiswarm = new MultiSwarm(4, 1000, new LolFitnessFunction());
+                this.noSwarms = noSwarms;
+                this.noParticles = noParticles;
+                this.inertiaFactor=inertiaFactor;
+                this.cw=cw;
+                this.sw=sw;
+                this.gw=gw;
+	        multiswarm = new MultiSwarm(noSwarms, noParticle, new LolFitnessFunction(),inertiaFactor,cw,sw,gw);
 		//---swarm setup---//
 		this.paramList = new String[]{"X", "Y", "Z", "Red", "Green", "Blue", "Alpha", "Beta", "Gamma"};
 		this.numDimensions = 9; //TODO: Set dynamically

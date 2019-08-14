@@ -15,7 +15,7 @@ import java.util.TimerTask;
            int maxim;
            int flag;
            PopulationManager popMgr;
-           CrunchifyReminder(int maxim, PopulationManager pogMgr)
+         public  CrunchifyReminder(int maxim, PopulationManager pogMgr)
            {
                this.maxim=maxim;
                this.popMgr=pogMgr;

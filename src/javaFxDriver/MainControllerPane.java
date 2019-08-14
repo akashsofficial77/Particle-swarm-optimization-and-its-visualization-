@@ -88,7 +88,7 @@ public class MainControllerPane {
 				popMngr.setActiveDriver("basic2D");
 			}
 			else {
-				basic3D = new Basic3dDriver(searchSpace, initGoal, (int) numPopSlider.getValue(), popSizes);
+				//basic3D = new Basic3dDriver(searchSpace, initGoal, (int) numPopSlider.getValue(), popSizes);
 				popMngr.addDriver("basic3D", basic3D);
 				popMngr.setActiveDriver("basic3D");
 			}

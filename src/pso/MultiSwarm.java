@@ -25,10 +25,18 @@ public class MultiSwarm {
 	private FitnessFunction fitnessFunction;
         Toolkit toolkit;
 	Timer timer;
+        private double inertiaFactor;
+        private double cw;
+        private double sw;
+        private double gw;
         
 
-	public MultiSwarm(int numSwarms, int particlesPerSwarm, FitnessFunction fitnessFunction) {
+	public MultiSwarm(int numSwarms, int particlesPerSwarm, FitnessFunction fitnessFunction,double inertiaFactor, double cw, double sw, double gw) {
 		this.fitnessFunction = fitnessFunction;
+                this.inertiaFactor=inertiaFactor;
+                this.cw=cw;
+                this.sw=sw;
+                this.gw=gw;
 		this.swarms = new Swarm[numSwarms];
 		for (int i = 0; i < numSwarms; i++) {
 			swarms[i] = new Swarm(particlesPerSwarm);
@@ -131,12 +139,12 @@ public class MultiSwarm {
 	
 	private int getNewParticleSpeedForIndex(Particle particle, Swarm swarm, int index) {
 
-		return (int) ((Constants.INERTIA_FACTOR * particle.getSpeed()[index])
-				+ (randomizePercentage(Constants.COGNITIVE_WEIGHT)
+		return (int) ((inertiaFactor * particle.getSpeed()[index])
+				+ (randomizePercentage(cw)
 						* (particle.getBestPosition()[index] - particle.getPosition()[index]))
-				+ (randomizePercentage(Constants.SOCIAL_WEIGHT)
+				+ (randomizePercentage(sw)
 						* (swarm.getBestPosition()[index] - particle.getPosition()[index]))
-				+ (randomizePercentage(Constants.GLOBAL_WEIGHT)
+				+ (randomizePercentage(gw)
 						* (bestPosition[index] - particle.getPosition()[index])));
 	}
 

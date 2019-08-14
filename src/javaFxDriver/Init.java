@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
 import pso.MultiSwarm;
+import userInterface.mainFrame;
 
 
 public class Init extends Application {
@@ -30,9 +31,29 @@ public class Init extends Application {
 	private boolean isFullscreen = false;
         Toolkit toolkit;
 	Timer timer;
+        private int noSwarms;
+        private int noParticles;
+        private int timerDelay;
+          private double cw;
+       private double sw;
+       private double gw;
+       private double inertiaFactor;
 	private void buildMainPane () {
 		
 	}
+        
+   /*    public Init(int noSwarms, int noParticles, int timerDelay,double inertiaFactor,double cw, double sw, double gw){
+                this.noSwarms = noSwarms;
+                this.noParticles = noParticles;
+                this.timerDelay = timerDelay;
+                this.inertiaFactor=inertiaFactor;
+                this.cw= cw;
+                this.sw=sw;
+                this.gw=gw;
+                String args="";
+               // main(args);
+            	
+        }*/
 	
 	@Override
 	public void start (Stage stage) {
@@ -48,7 +69,7 @@ public class Init extends Application {
 		 */
 		int[] searchSpace = new int[]{900, 675, 255, 255, 255};
 		int[] initGoal = new int[]{255, 255, 255, 255, 255};
-		PopulationDriver basic2D = new Basic3dDriver(searchSpace, initGoal, -1, new int[100]);
+		PopulationDriver basic2D = new Basic3dDriver(searchSpace, initGoal, -1, new int[100],noSwarms,noParticles,inertiaFactor,cw,sw,gw);
                 
 		this.popMngr.addDriver("basic2D", basic2D);
 		this.popMngr.setActiveDriver("basic2D");
@@ -68,7 +89,7 @@ public class Init extends Application {
 		 timer = new Timer();
                  System.out.println("********************************************called once");
 	        timer.schedule(new CrunchifyReminder(maxim,popMngr), 0, // initial delay
-				200);
+				timerDelay);
             //     timer.schedule(new CrunchifyReminder2(), 500, // initial delay
 		//		1 * 500);// subsequent rate
 		AnimationTimer timer = new AnimationTimer() {
@@ -88,34 +109,18 @@ public class Init extends Application {
 		scene.setRoot(mainBorderPane);
 		stage.show();
 		
-		//---KEY LISTENERS---//
-		scene.setOnKeyPressed((KeyEvent e) -> {
-			//---FULLSCREEN: F / ESC---//
-			if (e.getCode() == KeyCode.F) {
-				isFullscreen = !isFullscreen;
-				stage.setFullScreen(isFullscreen);
-				popMngr.setFullscreen(isFullscreen, stage.getWidth(), stage.getHeight());
-				VBox vb = new VBox();
-				if (isFullscreen) {
-					vb.getChildren().add(popMngr.getActiveDriver().getUiNode());
-				}
-				else {
-					//mpc.rebuildPane();
-					vb.getChildren().add(mainBorderPane);
-				}
-				scene.setRoot(vb);
-			}	
-		});
+		
                 
             
 		
 	}
         
 
-           
+ public static void main(String args[]){
+     
+     new mainFrame();
+     launch(args);
+ } 
 
-	public static void main (String[] args) {
-		launch(args);
-	}
 
 }

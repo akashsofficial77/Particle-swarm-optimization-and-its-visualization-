@@ -40,12 +40,12 @@ public class Driver2d extends JPanel {
         private PsoConfigOptions c;
 	private int goalRadius = 10;
 	private int numDimensions;
-	MultiSwarm multiswarm = new MultiSwarm(1, 1000, new LolFitnessFunction());
+//	MultiSwarm multiswarm = new MultiSwarm(1, 1000, new LolFitnessFunction());
 	public Driver2d (int width, int height, PsoConfigOptions c) {
 		//this.addMouseListener(this);
 		this.setBackground(new Color(255, 255, 255));
 		this.c = c;
-                p = multiswarm.getSwarm();
+           //     p = multiswarm.getSwarm();
 		//Position size = new Position(new int[]{width, height});
 		//this.p = new Population(, populationSize, fitnessFunction, c);
 		//this.c.PARTICLE_UPPER_BOUND = p;
