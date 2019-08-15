@@ -98,7 +98,7 @@ public class MultiSwarm {
                                 count++;
                                    ff= (position[0] * costWebA) + (position[1] * costWebB)+(position[2]*costWebC)+(position[3]*costWebD)+(position[4]*costWebE)+(position[5]*costWebF);
                                    views = (position[0] * viewsArray[0]) + (position[1] * viewsArray[1])+(position[2]*viewsArray[2])+(position[3]*viewsArray[3])+(position[4]*viewsArray[4])+(position[5]*viewsArray[5]);
-                                   if((maxim-ff)<(maxim-outff) && (maxim-ff)>=0)
+                                   if((maxim-ff)<(maxim-outff) && (maxim-ff)>=0  && position[0]>0 && position[1]>0 && position[2]>0 && position[3]>0 && position[4]>0 && position[5]>0 )
                                    {
                                        if(outViews<views)
                                        {
@@ -110,6 +110,7 @@ public class MultiSwarm {
                                   series1.add(count,(position[0]+position[1]+position[2]+position[3]+position[4]+position[5])*10); 
                                if(count==((swarms.length*swarms[0].getParticles().length*1000)/2)-1)
                                {
+                                  
                                   JOptionPane.showMessageDialog(null,outViews+" "+outff+"   "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
                                    dataset.addSeries(series1);
                                    Chart chart = new Chart(
