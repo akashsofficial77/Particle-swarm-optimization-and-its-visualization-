@@ -20,7 +20,7 @@ import org.jfree.data.xy.XYSeriesCollection;
  * @author Aditya
  */
 public class MultiSwarm {
-	//int count=0;
+
         
 	private Swarm[] swarms;
         long[] output;
@@ -41,7 +41,7 @@ public class MultiSwarm {
         private double sw;
         private double gw;
         private static  int count=0 ;
-       // ArrayList<long []> a1 = new ArrayList<long[]>();
+   
          XYSeriesCollection dataset = new XYSeriesCollection();
 	 XYSeries series1 = new XYSeries("Graphical Analysis");
         
@@ -56,12 +56,7 @@ public class MultiSwarm {
 		for (int i = 0; i < numSwarms; i++) {
 			swarms[i] = new Swarm(particlesPerSwarm);
 		}
-                /* toolkit = Toolkit.getDefaultToolkit();
-		 timer = new Timer();
-	         timer.schedule(new CrunchifyReminder(), 1000, // initial delay
-				1 * 1500); // subsequent rate
-		*/
-                
+   
                
 	}
 
@@ -69,26 +64,7 @@ public class MultiSwarm {
             return swarms;
         }
         
-       /*  class CrunchifyReminder extends TimerTask {
-		int loop=0;
 
- 
-		public void run() {
-			if (loop < 5) {
-				toolkit.beep();
-				float elapsedTime = 0;
-                                mainLoop(loop);
-				loop++;
-			} else {
-				toolkit.beep();
-				System.out.format("\nThat's it.. Done..!");
-				timer.cancel();
-			}
-		}
-                
-        }
-        */
-    
         
 	public void mainLoop(int maxim,int costWebA, int costWebB,int costWebC,int costWebD,int costWebE,int costWebF, int[] viewsArray) {
                
@@ -100,8 +76,6 @@ public class MultiSwarm {
 				// Calculate the particle fitness.
 				particle.setFitness(fitnessFunction.getFitness(particleOldPosition,maxim,costWebA,costWebB,costWebC,costWebD,costWebE,costWebF,viewsArray));
 
-				// Check if a new best position has been found for the particle
-				// itself, within the swarm and the multiswarm.
 				if (particle.getFitness() > particle.getBestFitness()) {
 					particle.setBestFitness(particle.getFitness());
 					particle.setBestPosition(particleOldPosition);
@@ -114,21 +88,15 @@ public class MultiSwarm {
 							bestFitness = swarm.getBestFitness();
 							bestPosition = swarm.getBestPosition().clone();
 						}
-
 					}
 				}
 
-				// Updates the particle position by adding the speed to the
-				// actual position.
 				long[] position = particle.getPosition();
-				//long[] position2 = particle.getPosition2();
 				long[] speed = particle.getSpeed();
-				
 				long x=position[0];
 				long y=position[1];
 				long z=position[2];
-				
-				
+	
 				position[0] += speed[0];
                                 position[1] += speed[1];
                                 position[2] += speed[2];
@@ -136,11 +104,7 @@ public class MultiSwarm {
                                 position[4] += speed[4];
                                 position[5] += speed[5];
                                 count++;
-                              // System.out.println(swarms.length*swarms[0].getParticles().length*1000-1);
 
-                                   
-                                   
-                                  // a1.add(particle.getPosition());
                                    ff= (position[0] * costWebA) + (position[1] * costWebB)+(position[2]*costWebC)+(position[3]*costWebD)+(position[4]*costWebE)+(position[5]*costWebF);
                                    views = (position[0] * viewsArray[0]) + (position[1] * viewsArray[1])+(position[2]*viewsArray[2])+(position[3]*viewsArray[3])+(position[4]*viewsArray[4])+(position[5]*viewsArray[5]);
                                    if((maxim-ff)<(maxim-outff) && (maxim-ff)>=0)
@@ -152,16 +116,11 @@ public class MultiSwarm {
                                        output=particle.getPosition();
                                        }
                                    }
-                                   //System.out.println(ff+"      "+position[0]+","+position[1]+","+position[2]+","+position[3]+","+position[4]+","+position[5]);
-                                   //System.out.println("xx "+outff+"      "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
-                                   //JOptionPane.showMessageDialog(null,position[0]+","+position[1]+","+position[2]+","+position[3]+","+position[4]+","+position[5]);
-                                   
-                                   //System.out.println(al.get(xxx-1)[0]+","+al.get(xxx-1)[1]+","+al.get(xxx-1)[2]+","+al.get(xxx-1)[3]+","+al.get(xxx-1)[4]+","+al.get(xxx-1)[5]+",");
 
+                                   
+                            
                                   series1.add(count,(position[0]+position[1]+position[2]+position[3]+position[4]+position[5])*10); 
-                                    //JOptionPane.showMessageDialog(null,position[0]+","+position[1]+","+position[2]+","+position[3]+","+position[4]+","+position[5]);
-                                   //System.out.println(al.get(xxx-1)[0]+","+al.get(xxx-1)[1]+","+al.get(xxx-1)[2]+","+al.get(xxx-1)[3]+","+al.get(xxx-1)[4]+","+al.get(xxx-1)[5]+",");
-                               
+                                
                                
                                if(count==((swarms.length*swarms[0].getParticles().length*1000)/2)-1)
                                {
@@ -171,8 +130,9 @@ public class MultiSwarm {
                                    "Element No Vs Time Required" ,
                                    "Element No  vs Time Required", dataset);
                                    chart.pack( );
-                                     // RefineryUtilities.centerFrameOnScreen( chart );
+                              
                                    chart.setVisible( true ); 
+                                   break;
                               
                                }
                                
