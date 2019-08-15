@@ -70,7 +70,7 @@ public class Basic3dDriver extends PopulationDriver {
                 this.buildCamera();
                 this.buildParticles();  
                 this.scene = new SubScene(root, width, height, true, SceneAntialiasing.BALANCED);
-		this.scene.setFill(Color.color(0.85, 0.85, 1.0));
+		this.scene.setFill(Color.color(1, 1, 1));
 		this.scene.setCamera(camera);
        
 		
