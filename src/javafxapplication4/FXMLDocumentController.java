@@ -101,7 +101,7 @@ public class FXMLDocumentController  implements Initializable {
 		 timer = new Timer();
                  System.out.println("********************************************called once");
 	        timer.schedule(new CrunchifyReminder(maxim,popMngr,timer), 0, // initial delay
-				200);
+				400);
              //   MainControllerPane mpc = new MainControllerPane(this.popMngr, timer, this.activeGraphicsPane);
 		
 	//	mainBorderPane.setLeft(mpc.getPane());

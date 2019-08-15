@@ -19,11 +19,12 @@ import javax.swing.JOptionPane;
  */
 public class MultiSwarm {
 	//int count=0;
-
+        
 	private Swarm[] swarms;
-
+        long[] output;
 	private long[] bestPosition;
-
+        long ff;
+        long outff=0;
 	private double bestFitness = Double.NEGATIVE_INFINITY;
 
 	private Random random = new Random();
@@ -130,13 +131,28 @@ public class MultiSwarm {
                                 position[5] += speed[5];
                                 count++;
                                //System.out.println(count);
-                               if(count==8-1)
+                               if(count>=4000000-990)
                                {
                                    a1.add(particle.getPosition());
-                                   System.out.println(position[0]+","+position[1]+","+position[2]+","+position[3]+","+position[4]+","+position[5]);
-                                   JOptionPane.showMessageDialog(null,position[0]+","+position[1]+","+position[2]+","+position[3]+","+position[4]+","+position[5]);
+                                   ff= (position[0] * 10) + (position[1] * 10)+(position[2]*10)+(position[3]*10)+(position[4]*10)+(position[5]*10);
+                                   if((5000-ff)<(5000-outff) && (5000-ff)>=0)
+                                   {
+                                       outff=ff;
+                                       output=particle.getPosition();
+                                   }
+                                   //System.out.println(ff+"      "+position[0]+","+position[1]+","+position[2]+","+position[3]+","+position[4]+","+position[5]);
+                                   System.out.println("xx "+outff+"      "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
+                                   
+                                    //JOptionPane.showMessageDialog(null,position[0]+","+position[1]+","+position[2]+","+position[3]+","+position[4]+","+position[5]);
                                    //System.out.println(al.get(xxx-1)[0]+","+al.get(xxx-1)[1]+","+al.get(xxx-1)[2]+","+al.get(xxx-1)[3]+","+al.get(xxx-1)[4]+","+al.get(xxx-1)[5]+",");
                                }
+                               
+                               if(count==4000000-1)
+                               {
+                                  JOptionPane.showMessageDialog(null,outff+"   "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
+                                    
+                               }
+                               
                 
                                   speed[0] = getNewParticleSpeedForIndex(particle, swarm, 0);
                                   speed[1] = getNewParticleSpeedForIndex(particle, swarm, 1);

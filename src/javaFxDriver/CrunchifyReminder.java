@@ -66,9 +66,9 @@ import javafx.stage.Stage;
 public void run() {
     
         cnt++;
-    System.out.println("swarm movement loop with count = "+cnt+"***************************");
+   // System.out.println("swarm movement loop with count = "+cnt+"***************************");
     
-    if (cnt == 5){
+    if (cnt == 1000){
         System.out.println("******************************************* Stopping the timer **********************************");
         timer.cancel();
           
