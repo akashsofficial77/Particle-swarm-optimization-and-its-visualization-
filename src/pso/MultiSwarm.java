@@ -26,7 +26,9 @@ public class MultiSwarm {
         long[] output;
 	private long[] bestPosition;
         long ff;
-        long outff=0;
+        long views;
+        long outViews=-999999999;
+        long outff=-999999999;
 	private double bestFitness = Double.NEGATIVE_INFINITY;
 
 	private Random random = new Random();
@@ -39,7 +41,7 @@ public class MultiSwarm {
         private double sw;
         private double gw;
         private static  int count=0 ;
-        ArrayList<long []> a1 = new ArrayList<long[]>();
+       // ArrayList<long []> a1 = new ArrayList<long[]>();
          XYSeriesCollection dataset = new XYSeriesCollection();
 	 XYSeries series1 = new XYSeries("Graphical Analysis");
         
@@ -134,38 +136,44 @@ public class MultiSwarm {
                                 position[4] += speed[4];
                                 position[5] += speed[5];
                                 count++;
-                               //System.out.println(count);
-                               if(count>=4000000-990)
-                               {
-                                   a1.add(particle.getPosition());
-                                   ff= (position[0] * 10) + (position[1] * 10)+(position[2]*10)+(position[3]*10)+(position[4]*10)+(position[5]*10);
-                                   if((5000-ff)<(5000-outff) && (5000-ff)>=0)
+                              // System.out.println(swarms.length*swarms[0].getParticles().length*1000-1);
+
+                                   
+                                   
+                                  // a1.add(particle.getPosition());
+                                   ff= (position[0] * costWebA) + (position[1] * costWebB)+(position[2]*costWebC)+(position[3]*costWebD)+(position[4]*costWebE)+(position[5]*costWebF);
+                                   views = (position[0] * viewsArray[0]) + (position[1] * viewsArray[1])+(position[2]*viewsArray[2])+(position[3]*viewsArray[3])+(position[4]*viewsArray[4])+(position[5]*viewsArray[5]);
+                                   if((maxim-ff)<(maxim-outff) && (maxim-ff)>=0)
                                    {
+                                       if(outViews<views)
+                                       {
+                                       outViews=views;
                                        outff=ff;
                                        output=particle.getPosition();
+                                       }
                                    }
                                    //System.out.println(ff+"      "+position[0]+","+position[1]+","+position[2]+","+position[3]+","+position[4]+","+position[5]);
-                                   System.out.println("xx "+outff+"      "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
-                                   JOptionPane.showMessageDialog(null,position[0]+","+position[1]+","+position[2]+","+position[3]+","+position[4]+","+position[5]);
-                                   dataset.addSeries(series1);
-                                     Chart chart = new Chart(
-                                     "Element No Vs Time Required" ,
-                                     "Element No  vs Time Required", dataset);
-                                     chart.pack( );
-                                     // RefineryUtilities.centerFrameOnScreen( chart );
-                                      chart.setVisible( true ); 
-                                      break;
+                                   //System.out.println("xx "+outff+"      "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
+                                   //JOptionPane.showMessageDialog(null,position[0]+","+position[1]+","+position[2]+","+position[3]+","+position[4]+","+position[5]);
+                                   
                                    //System.out.println(al.get(xxx-1)[0]+","+al.get(xxx-1)[1]+","+al.get(xxx-1)[2]+","+al.get(xxx-1)[3]+","+al.get(xxx-1)[4]+","+al.get(xxx-1)[5]+",");
-                               }
+
                                   series1.add(count,(position[0]+position[1]+position[2]+position[3]+position[4]+position[5])*10); 
                                     //JOptionPane.showMessageDialog(null,position[0]+","+position[1]+","+position[2]+","+position[3]+","+position[4]+","+position[5]);
                                    //System.out.println(al.get(xxx-1)[0]+","+al.get(xxx-1)[1]+","+al.get(xxx-1)[2]+","+al.get(xxx-1)[3]+","+al.get(xxx-1)[4]+","+al.get(xxx-1)[5]+",");
                                
                                
-                               if(count==4000000-1)
+                               if(count==((swarms.length*swarms[0].getParticles().length*1000)/2)-1)
                                {
-                                  JOptionPane.showMessageDialog(null,outff+"   "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
-                                    
+                                  JOptionPane.showMessageDialog(null,outViews+" "+outff+"   "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
+                                   dataset.addSeries(series1);
+                                   Chart chart = new Chart(
+                                   "Element No Vs Time Required" ,
+                                   "Element No  vs Time Required", dataset);
+                                   chart.pack( );
+                                     // RefineryUtilities.centerFrameOnScreen( chart );
+                                   chart.setVisible( true ); 
+                              
                                }
                                
                 
