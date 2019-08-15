@@ -3,7 +3,7 @@ package javaFxDriver;
 import java.util.ArrayList;
 
 import javafx.scene.Node;
-import pso.LolFitnessFunction;
+import pso.FitnessFunction;
 import javaFxDriver.PsoConfigOptions;
 import pso.MultiSwarm;
 import pso.Swarm;
@@ -13,7 +13,7 @@ import pso.Swarm;
  */
 public abstract class PopulationDriver {
 	
-	protected LolFitnessFunction fitnessFunction;
+	protected FitnessFunction fitnessFunction;
 	protected ArrayList<PsoConfigOptions> opts = new ArrayList<PsoConfigOptions>();
 	protected ArrayList<Swarm> populations = new ArrayList<Swarm>();
 	

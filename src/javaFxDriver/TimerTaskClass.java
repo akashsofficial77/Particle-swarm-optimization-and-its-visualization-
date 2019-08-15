@@ -16,12 +16,12 @@ import javafx.stage.Stage;
  *
  * @author Aditya
  */
-       public  class TimerTaskClass extends TimerTask {
-           int maxim;
-           int flag;
-           PopulationManager popMgr;
-           Timer timer;
-            public int costWebA;
+public  class TimerTaskClass extends TimerTask {
+    int maxim;
+    int flag;
+    PopulationManager popMgr;
+    Timer timer;
+    public int costWebA;
     public int costWebB;
     public int costWebC;
     public int costWebD;
@@ -45,59 +45,28 @@ import javafx.stage.Stage;
                this.costWebF=costWebF;
                this.viewsArray=viewsArray;
            }
-		//int loop=0;
-              //  private PopulationManager popMngr = new PopulationManager();
 
-/*
-                 Thread t1 = new Thread(){
-                      public void run(){
-                          
-                          while(true){
-                          //toolkit.beep();
-                         
-                        }
-                      }
-                      
-                  };
-*/
-                                Thread t2 = new Thread(){
-                                public void run(){
-                                while(true){
-				//toolkit.beep();
-                              //  cnt1++;
-                            //   if(cnt1==300) break;
-                               // System.out.println("cube movement loop");
-				float elapsedTime = 0;
-                                flag=0;
-                                popMgr.update(elapsedTime, flag, maxim,costWebA,costWebB,costWebC,costWebD,costWebE,costWebF,viewsArray);
-				//loop++;
-			}           
-     }
+            Thread t2 = new Thread(){
+                    public void run(){
+                        while(true){
+		            float elapsedTime = 0;
+                            flag=0;
+                            popMgr.update(elapsedTime, flag, maxim,costWebA,costWebB,costWebC,costWebD,costWebE,costWebF,viewsArray);
+				
+	                }           
+                    }
  };
 
 @Override    
 // run method of timer task
 public void run() {
-    
-        cnt++;
-   // System.out.println("swarm movement loop with count = "+cnt+"***************************");
-    
+    cnt++;
     if (cnt == 1000){
         System.out.println("******************************************* Stopping the timer **********************************");
         timer.cancel();
-          
+         }
+    float elapsedTime = 0;
+    flag=1;
+    popMgr.update(elapsedTime,flag,maxim,costWebA,costWebB,costWebC,costWebD,costWebE,costWebF,viewsArray); 
+         }
     }
-                          float elapsedTime = 0;
-                          //if (loop>=0){
-                          flag=1;
-                          popMgr.update(elapsedTime,flag,maxim,costWebA,costWebB,costWebC,costWebD,costWebE,costWebF,viewsArray);
-                          //loop--;
-                         // }
-                         // else{
-                           // loop=0;  
-                         // }
-                         
-    
-    
-}
-       }

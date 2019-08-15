@@ -86,11 +86,5 @@ public class Particle {
 		this.bestFitness = bestFitness;
 	}
 
-	
-	@Override
-	public String toString() {
-		return "Particle [position=" + Arrays.toString(position) + ", speed=" + Arrays.toString(speed) + ", fitness="
-				+ fitness + ", bestPosition=" + Arrays.toString(bestPosition) + ", bestFitness=" + bestFitness + "]";
-	}
 
 }
