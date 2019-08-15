@@ -2,15 +2,9 @@
 package pso;
 
 import java.awt.Toolkit;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
-import java.util.TimerTask;
-import java.util.Timer;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
+import java.util.Timer;;
 import javax.swing.JOptionPane;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
@@ -33,7 +27,7 @@ public class MultiSwarm {
 
 	private Random random = new Random();
 
-	private FitnessFunction fitnessFunction;
+	private FitnessFunctionInterface fitnessFunction;
         Toolkit toolkit;
 	Timer timer;
         private double inertiaFactor;
@@ -46,7 +40,7 @@ public class MultiSwarm {
 	 XYSeries series1 = new XYSeries("Graphical Analysis");
         
 
-	public MultiSwarm(int numSwarms, int particlesPerSwarm, FitnessFunction fitnessFunction,double inertiaFactor, double cw, double sw, double gw) {
+	public MultiSwarm(int numSwarms, int particlesPerSwarm, FitnessFunctionInterface fitnessFunction,double inertiaFactor, double cw, double sw, double gw) {
 		this.fitnessFunction = fitnessFunction;
                 this.inertiaFactor=inertiaFactor;
                 this.cw=cw;
@@ -90,13 +84,11 @@ public class MultiSwarm {
 						}
 					}
 				}
-
 				long[] position = particle.getPosition();
 				long[] speed = particle.getSpeed();
 				long x=position[0];
 				long y=position[1];
 				long z=position[2];
-	
 				position[0] += speed[0];
                                 position[1] += speed[1];
                                 position[2] += speed[2];
@@ -104,7 +96,6 @@ public class MultiSwarm {
                                 position[4] += speed[4];
                                 position[5] += speed[5];
                                 count++;
-
                                    ff= (position[0] * costWebA) + (position[1] * costWebB)+(position[2]*costWebC)+(position[3]*costWebD)+(position[4]*costWebE)+(position[5]*costWebF);
                                    views = (position[0] * viewsArray[0]) + (position[1] * viewsArray[1])+(position[2]*viewsArray[2])+(position[3]*viewsArray[3])+(position[4]*viewsArray[4])+(position[5]*viewsArray[5]);
                                    if((maxim-ff)<(maxim-outff) && (maxim-ff)>=0)
@@ -116,12 +107,7 @@ public class MultiSwarm {
                                        output=particle.getPosition();
                                        }
                                    }
-
-                                   
-                            
                                   series1.add(count,(position[0]+position[1]+position[2]+position[3]+position[4]+position[5])*10); 
-                                
-                               
                                if(count==((swarms.length*swarms[0].getParticles().length*1000)/2)-1)
                                {
                                   JOptionPane.showMessageDialog(null,outViews+" "+outff+"   "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
@@ -133,10 +119,7 @@ public class MultiSwarm {
                               
                                    chart.setVisible( true ); 
                                    break;
-                              
                                }
-                               
-                
                                   speed[0] = getNewParticleSpeedForIndex(particle, swarm, 0);
                                   speed[1] = getNewParticleSpeedForIndex(particle, swarm, 1);
                                   speed[2] = getNewParticleSpeedForIndex(particle, swarm, 2);
@@ -144,16 +127,9 @@ public class MultiSwarm {
                                   speed[4] = getNewParticleSpeedForIndex(particle, swarm, 4);
                                   speed[5] = getNewParticleSpeedForIndex(particle, swarm, 5);
                                    //System.out.println("main loop print SWARM");
-                                   
-                                   
-
-				
-				
-			
                  }
 		}
 	}
-
 	
 	private int getNewParticleSpeedForIndex(Particle particle, Swarm swarm, int index) {
 
@@ -165,7 +141,6 @@ public class MultiSwarm {
 				+ (randomizePercentage(gw)
 						* (bestPosition[index] - particle.getPosition()[index])));
 	}
-
 
 	private double randomizePercentage(double value) {
 		Double xx= random.nextDouble();
@@ -181,13 +156,6 @@ public class MultiSwarm {
 	
 	public double getBestFitness() {
 		return bestFitness;
-	}
-
-	
-	@Override
-	public String toString() {
-		return "Multiswarm [swarms=" + Arrays.toString(swarms) + ", bestPosition=" + Arrays.toString(bestPosition)
-				+ ", bestFitness=" + bestFitness + ", random=" + random + ", fitnessFunction=" + fitnessFunction + "]";
 	}
 
 }

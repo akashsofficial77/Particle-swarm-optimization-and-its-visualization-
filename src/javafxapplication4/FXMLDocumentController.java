@@ -11,17 +11,15 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 import javaFxDriver.Basic3dDriver;
 import javaFxDriver.TimerTaskClass;
-import javaFxDriver.MainControllerPane;
+
 import javaFxDriver.PopulationDriver;
 import javaFxDriver.PopulationManager;
-import javafx.animation.AnimationTimer;
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -35,29 +33,17 @@ import javax.swing.JOptionPane;
  */
 public class FXMLDocumentController  implements Initializable {
     
-    private Label label;
-    @FXML
-    private Button button;
-    private TextField txtField;
-    
     int  noSwarm;
     int noParticle;
-      int maxim;
-	private long lastTime;
-	private BorderPane mainBorderPane = new BorderPane();
-	private BorderPane activeGraphicsPane = new BorderPane();
-	private PopulationManager popMngr = new PopulationManager();
-        Basic3dDriver basic2D;
-	private boolean isFullscreen = false;
-        Toolkit toolkit;
-	Timer timer;
-        private int noSwarms;
-        private int noParticles;
-        private int timerDelay;
-          private double cw;
-       private double sw;
-       private double gw;
-       private double inertiaFactor;
+    int maxim;
+    private long lastTime;
+    private BorderPane mainBorderPane = new BorderPane();
+    private BorderPane activeGraphicsPane = new BorderPane();
+    private PopulationManager popMngr = new PopulationManager();
+    Basic3dDriver basic3D;
+    Timer timer;
+    private int noSwarms;
+    private int noParticles;
     @FXML
     private TextField noSwarmTextField;
     @FXML
@@ -76,17 +62,13 @@ public class FXMLDocumentController  implements Initializable {
     private TextField costATxtField;
     @FXML
     private TextField costFTxtField;
- 
-    public int noWebsites;
-    public int budget;
-    public int costWebA;
-    public int costWebB;
-    public int costWebC;
-    public int costWebD;
-    public int costWebE;
-    public int costWebF;
-    int[] viewsArray = new int[6];
-   // public int budget;
+    private int costWebA;
+    private int costWebB;
+    private int costWebC;
+    private int costWebD;
+    private int costWebE;
+    private int costWebF;
+    private int[] viewsArray = new int[6];
     @FXML
     private TextField viewBTextField;
     @FXML
@@ -99,103 +81,100 @@ public class FXMLDocumentController  implements Initializable {
     private TextField viewFTextField;
     @FXML
     private TextField viewATextField;
-
-
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
       
     }
-    //button.seton
-
+   
     @FXML
     private void handleButtonAction(MouseEvent event) {
-        if(noSwarmTextField.getText().equals("")||noParticleTextField.getText().equals("")){
+        if(noSwarmTextField.getText().equals("")||noParticleTextField.getText().equals("")||
+                costCTxtField.getText().equals("")||costDTxtField.getText().equals("")||costETxtField.getText().equals("")||
+                costFTxtField.getText().equals("")||costATxtField.getText().equals("")||costBTxtField.getText().equals("")
+                ||budgetTextField.getText().equals("")||viewATextField.getText().equals("")||viewBTextField.getText().equals("")
+                ||viewCTextField.getText().equals("")||viewDTextField.getText().equals("")||viewETextField.getText().equals("")
+                ||viewFTextField.getText().equals("")){
              JOptionPane.showMessageDialog(null,"One or more fields are empty");
         }else{
-        if(noSwarmTextField.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"One or more fields are empty");
+        if( Integer.valueOf(noSwarmTextField.getText())<0){
+            JOptionPane.showMessageDialog(null,"Enter a positive value for total no of Swarms");
         }else{
         noSwarms = Integer.valueOf(noSwarmTextField.getText());
-        }
-        if(noParticleTextField.getText().equals("")){
-            noParticles=0;
+        
+        if(Integer.valueOf(noParticleTextField.getText())<0){
+         JOptionPane.showMessageDialog(null,"Enter a positive value for total no of Particles");
         
         }else {
             noParticles = Integer.valueOf(noParticleTextField.getText());
-        }
-        if(costCTxtField.getText()==null){
-            costWebC=0;
+        
+        if(Integer.valueOf(costCTxtField.getText())<0){
+           JOptionPane.showMessageDialog(null,"Enter a positive cost");
         }else{
               costWebC = Integer.valueOf(costCTxtField.getText());
-        }
-          if(costATxtField.getText()==null){
-            costWebA=0;
+        
+        if(Integer.valueOf(costATxtField.getText())<0){
+            JOptionPane.showMessageDialog(null,"Enter a positive cost");
         }else{
               costWebA = Integer.valueOf(costATxtField.getText());
-        }
-            if(costBTxtField.getText()==null){
-            costWebB=0;
+        
+        if(Integer.valueOf(costBTxtField.getText())<0){
+            JOptionPane.showMessageDialog(null,"Enter a positive cost");
         }else{
               costWebB = Integer.valueOf(costBTxtField.getText());
-        }
-              if(costDTxtField.getText()==null){
-            costWebD=0;
+        
+        if(Integer.valueOf(costDTxtField.getText())<0){
+            JOptionPane.showMessageDialog(null,"Enter a positive cost");
         }else{
               costWebD = Integer.valueOf(costDTxtField.getText());
-        }
-                if(costETxtField.getText()==null){
-            costWebE=0;
+        
+        if(Integer.valueOf(costETxtField.getText())<0){
+            JOptionPane.showMessageDialog(null,"Enter a positive cost");
         }else{
               costWebE = Integer.valueOf(costETxtField.getText());
-        }
-                  if(costFTxtField.getText()==null){
-            costWebF=0;
+        
+        if(Integer.valueOf(costFTxtField.getText())<0){
+           JOptionPane.showMessageDialog(null,"Enter a positive cost");
         }else{
               costWebF = Integer.valueOf(costFTxtField.getText());
-        }
-        if(budgetTextField.getText()==null){
-            costWebF=0;
-        }else{
-              costWebF = Integer.valueOf(costFTxtField.getText());
-        }
-        if(budgetTextField.getText()==null){
-            maxim=0;
+        
+  
+        if(Integer.valueOf(budgetTextField.getText())<0){
+            JOptionPane.showMessageDialog(null,"Enter a positive budget");
         }else{
             maxim = Integer.valueOf(budgetTextField.getText());
-        }
-          if(viewATextField.getText()==null){
-            viewsArray[0]=0;
+        
+        if(Integer.valueOf(viewATextField.getText())<0){
+           JOptionPane.showMessageDialog(null,"Enter a positive value for views");
         }else{
             viewsArray[0] = Integer.valueOf(viewATextField.getText());
-        }
-             if(viewBTextField.getText()==null){
-            viewsArray[1]=0;
+        
+        if(Integer.valueOf(viewBTextField.getText())<0){
+          JOptionPane.showMessageDialog(null,"Enter a positive value for views");
         }else{
             viewsArray[1] = Integer.valueOf(viewBTextField.getText());
-        }
-                if(viewCTextField.getText()==null){
-            viewsArray[2]=0;
+        
+        if(Integer.valueOf(viewCTextField.getText())<0l){
+           JOptionPane.showMessageDialog(null,"Enter a positive value for views");
         }else{
             viewsArray[2] = Integer.valueOf(viewCTextField.getText());
-        }
-                   if(viewDTextField.getText()==null){
-            viewsArray[3]=0;
+        
+        if(Integer.valueOf(viewDTextField.getText())<0){
+          JOptionPane.showMessageDialog(null,"Enter a positive value for views");
         }else{
             viewsArray[3] = Integer.valueOf(viewDTextField.getText());
-        }
-                      if(viewETextField.getText()==null){
-            viewsArray[4]=0;
+        
+        if(Integer.valueOf(viewETextField.getText())<0){
+           JOptionPane.showMessageDialog(null,"Enter a positive value for views");
         }else{
             viewsArray[4] = Integer.valueOf(viewETextField.getText());
-        }
-                         if(viewFTextField.getText()==null){
-            viewsArray[5]=0;
+        
+        if(Integer.valueOf(viewFTextField.getText())<0){
+          JOptionPane.showMessageDialog(null,"Enter a positive value for views");
         }else{
             viewsArray[5] = Integer.valueOf(viewFTextField.getText());
-        }
+        
                   
-        
-        
         double inertiaFactor = 0.79;
         double cw = 0.3;
         double sw= 0.01;
@@ -203,41 +182,43 @@ public class FXMLDocumentController  implements Initializable {
         Group root = new Group();
         Stage stage = new Stage();
         Scene scene = new Scene(root, 1154, 680, Color.WHITE);
-		stage.setScene(scene);
-		stage.setTitle("Particle Swarm Optimization Visualization");
-       int[] searchSpace = new int[]{900, 675, 255, 255, 255};
-		int[] initGoal = new int[]{255, 255, 255, 255, 255};
-		PopulationDriver basic2D = new Basic3dDriver(searchSpace, initGoal, -1, new int[100],noSwarms,noParticles,inertiaFactor,cw,sw,gw);
-                
-		this.popMngr.addDriver("basic2D", basic2D);
-		this.popMngr.setActiveDriver("basic2D");
+	stage.setScene(scene);
+	stage.setTitle("Particle Swarm Optimization Visualization");
+        int[] searchSpace = new int[]{900, 675, 255, 255, 255};
+	int[] initGoal = new int[]{255, 255, 255, 255, 255};
+	PopulationDriver basic3D = new Basic3dDriver(searchSpace, initGoal, -1, new int[100],noSwarms,noParticles,inertiaFactor,cw,sw,gw);
+        this.popMngr.addDriver("basic3D", basic3D);
+	this.popMngr.setActiveDriver("basic3D");
 		
 		//---SET MAIN GRAPHICS PANE---//
-		this.activeGraphicsPane.setCenter(this.popMngr.getActiveDriver().getUiNode());
-		this.activeGraphicsPane.setStyle("" +
+	this.activeGraphicsPane.setCenter(this.popMngr.getActiveDriver().getUiNode());
+	this.activeGraphicsPane.setStyle("" +
 			"-fx-background-color: #ffffff;" +
 			"-fx-border-color: #333333;" + 
 			"-fx-border-width: 2px;" +
 			"-fx-border-radius: 4px;"
-		); 
+	); 
                 
-                  this.lastTime = System.nanoTime();
-                  toolkit = Toolkit.getDefaultToolkit();
-		 timer = new Timer();
-                 System.out.println("********************************************called once");
-	        timer.schedule(new TimerTaskClass(maxim,popMngr,timer,costWebA,costWebB,costWebC,costWebD,costWebE,costWebF,viewsArray), 0, // initial delay
-				400);
-             //   MainControllerPane mpc = new MainControllerPane(this.popMngr, timer, this.activeGraphicsPane);
-		
-	//	mainBorderPane.setLeft(mpc.getPane());
-		mainBorderPane.setCenter(this.activeGraphicsPane);
-		scene.setRoot(mainBorderPane);
-		stage.show();
+        this.lastTime = System.nanoTime();
+	timer = new Timer();
+        //System.out.println("********************************************called once");
+	timer.schedule(new TimerTaskClass(maxim,popMngr,timer,costWebA,costWebB,costWebC,costWebD,costWebE,costWebF,viewsArray), 0,400);
+	mainBorderPane.setCenter(this.activeGraphicsPane);
+	scene.setRoot(mainBorderPane);
+	stage.show();
         }
                 
-    }
-    
-    
+    }}}}}}}}
+        }
+        }
+        }
+        }
+        }
+        }
+        }
+        
+        
+    } 
     
     
 }

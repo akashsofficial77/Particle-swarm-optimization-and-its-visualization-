@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import javafx.application.Platform;
 
-import pso.LolFitnessFunction;
+import pso.FitnessFunction;
 import pso.Particle;
 import pso.Swarm;
 import pso.MultiSwarm;
@@ -47,7 +47,7 @@ public class Basic3dDriver extends PopulationDriver {
         private double cw;
         private double sw;
         private double gw;
-	private LolFitnessFunction fitnessFunction = new LolFitnessFunction();
+	private FitnessFunction fitnessFunction = new FitnessFunction();
          MultiSwarm multiswarm;
         private Swarm[] ss;
 	
@@ -59,7 +59,7 @@ public class Basic3dDriver extends PopulationDriver {
                 this.cw=cw;
                 this.sw=sw;
                 this.gw=gw;
-	        multiswarm = new MultiSwarm(noSwarms, noParticle, new LolFitnessFunction(),inertiaFactor,cw,sw,gw);
+	        multiswarm = new MultiSwarm(noSwarms, noParticle, new FitnessFunction(),inertiaFactor,cw,sw,gw);
 		//---swarm setup---//
 		this.paramList = new String[]{"X", "Y", "Z", "Red", "Green", "Blue", "Alpha", "Beta", "Gamma"};
 		this.numDimensions = 9; //TODO: Set dynamically

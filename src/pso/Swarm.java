@@ -30,8 +30,8 @@ public class Swarm {
             sNumber =count++;
         particles = new Particle[numParticles];
         for (int i = 0; i < numParticles; i++) {
-            long[] initialParticlePosition = { random.nextInt(Constants.PARTICLE_UPPER_BOUND),
-                    random.nextInt(Constants.PARTICLE_UPPER_BOUND),random.nextInt(Constants.PARTICLE_UPPER_BOUND),random.nextInt(Constants.PARTICLE_UPPER_BOUND),random.nextInt(Constants.PARTICLE_UPPER_BOUND),random.nextInt(Constants.PARTICLE_UPPER_BOUND) };
+            long[] initialParticlePosition = { random.nextInt(1000),
+                    random.nextInt(1000),random.nextInt(1000),random.nextInt(1000),random.nextInt(1000),random.nextInt(1000) };
             long[] initialParticleSpeed = { 1,
                     1,1,1,1,1 };
             particles[i] = new Particle(initialParticlePosition, initialParticleSpeed);
