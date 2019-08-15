@@ -12,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
 /**
  *
@@ -38,6 +40,8 @@ public class MultiSwarm {
         private double gw;
         private static  int count=0 ;
         ArrayList<long []> a1 = new ArrayList<long[]>();
+         XYSeriesCollection dataset = new XYSeriesCollection();
+	 XYSeries series1 = new XYSeries("Graphical Analysis");
         
 
 	public MultiSwarm(int numSwarms, int particlesPerSwarm, FitnessFunction fitnessFunction,double inertiaFactor, double cw, double sw, double gw) {
@@ -142,7 +146,18 @@ public class MultiSwarm {
                                    }
                                    //System.out.println(ff+"      "+position[0]+","+position[1]+","+position[2]+","+position[3]+","+position[4]+","+position[5]);
                                    System.out.println("xx "+outff+"      "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
-                                   
+                                   JOptionPane.showMessageDialog(null,position[0]+","+position[1]+","+position[2]+","+position[3]+","+position[4]+","+position[5]);
+                                   dataset.addSeries(series1);
+                                     Chart chart = new Chart(
+                                     "Element No Vs Time Required" ,
+                                     "Element No  vs Time Required", dataset);
+                                     chart.pack( );
+                                     // RefineryUtilities.centerFrameOnScreen( chart );
+                                      chart.setVisible( true ); 
+                                      break;
+                                   //System.out.println(al.get(xxx-1)[0]+","+al.get(xxx-1)[1]+","+al.get(xxx-1)[2]+","+al.get(xxx-1)[3]+","+al.get(xxx-1)[4]+","+al.get(xxx-1)[5]+",");
+                               }
+                                  series1.add(count,(position[0]+position[1]+position[2]+position[3]+position[4]+position[5])*10); 
                                     //JOptionPane.showMessageDialog(null,position[0]+","+position[1]+","+position[2]+","+position[3]+","+position[4]+","+position[5]);
                                    //System.out.println(al.get(xxx-1)[0]+","+al.get(xxx-1)[1]+","+al.get(xxx-1)[2]+","+al.get(xxx-1)[3]+","+al.get(xxx-1)[4]+","+al.get(xxx-1)[5]+",");
                                }
