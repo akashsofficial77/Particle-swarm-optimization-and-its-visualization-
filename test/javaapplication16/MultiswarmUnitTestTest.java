@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication16;
+/*package javaapplication16;
 
 import pso.LolFitnessFunction;
 import pso.LolFitnessFunction;
@@ -20,7 +20,7 @@ import org.junit.Test;
  *
  * @author Aditya
  */
-public class MultiswarmUnitTestTest {
+/*public class MultiswarmUnitTestTest {
     
     public MultiswarmUnitTestTest() {
     }
@@ -45,7 +45,7 @@ public class MultiswarmUnitTestTest {
      * Test of givenMultiswarm_whenThousandIteration_thenSolutionFound method, of class MultiswarmUnitTest.
      */
     
-  	public void runSwarm() {
+  	/*public void runSwarm() {
 		MultiSwarm multiswarm = new MultiSwarm(50, 1000, new LolFitnessFunction());
 
 		// Iterates 1000 times through the main loop and prints the result.
@@ -58,4 +58,4 @@ public class MultiswarmUnitTestTest {
 		
 	}
     
-}
+}*/

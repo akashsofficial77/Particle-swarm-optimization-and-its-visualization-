@@ -58,6 +58,8 @@ public class FXMLDocumentController  implements Initializable {
        private double sw;
        private double gw;
        private double inertiaFactor;
+    @FXML
+    private Button button2;
   
 
     @Override
@@ -68,7 +70,7 @@ public class FXMLDocumentController  implements Initializable {
     @FXML
     private void handleButtonAction(MouseEvent event) {
         noSwarms = Integer.valueOf(txtField.getText());
-        int noParticles = 1;
+        int noParticles = 1000;
         double inertiaFactor = 0.79;
         double cw = 0.3;
         double sw= 0.01;
@@ -98,8 +100,8 @@ public class FXMLDocumentController  implements Initializable {
                   toolkit = Toolkit.getDefaultToolkit();
 		 timer = new Timer();
                  System.out.println("********************************************called once");
-	        timer.schedule(new CrunchifyReminder(maxim,popMngr), 0, // initial delay
-				100);
+	        timer.schedule(new CrunchifyReminder(maxim,popMngr,timer), 0, // initial delay
+				200);
              //   MainControllerPane mpc = new MainControllerPane(this.popMngr, timer, this.activeGraphicsPane);
 		
 	//	mainBorderPane.setLeft(mpc.getPane());

@@ -2,17 +2,23 @@
 package pso;
 
 import java.awt.Toolkit;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.TimerTask;
 import java.util.Timer;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Aditya
  */
 public class MultiSwarm {
-	int count=0;
+	//int count=0;
 
 	private Swarm[] swarms;
 
@@ -29,6 +35,8 @@ public class MultiSwarm {
         private double cw;
         private double sw;
         private double gw;
+        private static  int count=0 ;
+        ArrayList<long []> a1 = new ArrayList<long[]>();
         
 
 	public MultiSwarm(int numSwarms, int particlesPerSwarm, FitnessFunction fitnessFunction,double inertiaFactor, double cw, double sw, double gw) {
@@ -120,6 +128,15 @@ public class MultiSwarm {
                                 position[3] += speed[3];
                                 position[4] += speed[4];
                                 position[5] += speed[5];
+                                count++;
+                               //System.out.println(count);
+                               if(count==8-1)
+                               {
+                                   a1.add(particle.getPosition());
+                                   System.out.println(position[0]+","+position[1]+","+position[2]+","+position[3]+","+position[4]+","+position[5]);
+                                   JOptionPane.showMessageDialog(null,position[0]+","+position[1]+","+position[2]+","+position[3]+","+position[4]+","+position[5]);
+                                   //System.out.println(al.get(xxx-1)[0]+","+al.get(xxx-1)[1]+","+al.get(xxx-1)[2]+","+al.get(xxx-1)[3]+","+al.get(xxx-1)[4]+","+al.get(xxx-1)[5]+",");
+                               }
                 
                                   speed[0] = getNewParticleSpeedForIndex(particle, swarm, 0);
                                   speed[1] = getNewParticleSpeedForIndex(particle, swarm, 1);
@@ -128,6 +145,8 @@ public class MultiSwarm {
                                   speed[4] = getNewParticleSpeedForIndex(particle, swarm, 4);
                                   speed[5] = getNewParticleSpeedForIndex(particle, swarm, 5);
                                    //System.out.println("main loop print SWARM");
+                                   
+                                   
 
 				
 				
