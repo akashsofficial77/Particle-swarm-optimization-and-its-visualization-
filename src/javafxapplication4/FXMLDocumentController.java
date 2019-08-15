@@ -10,7 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import javaFxDriver.Basic3dDriver;
-import javaFxDriver.CrunchifyReminder;
+import javaFxDriver.TimerTaskClass;
 import javaFxDriver.MainControllerPane;
 import javaFxDriver.PopulationDriver;
 import javaFxDriver.PopulationManager;
@@ -27,6 +27,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -104,16 +105,19 @@ public class FXMLDocumentController  implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
       
     }
+    //button.seton
 
     @FXML
     private void handleButtonAction(MouseEvent event) {
-        
-        if(noSwarmTextField.getText()==null){
-            noSwarms = 0;
+        if(noSwarmTextField.getText().equals("")||noParticleTextField.getText().equals("")){
+             JOptionPane.showMessageDialog(null,"One or more fields are empty");
+        }else{
+        if(noSwarmTextField.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"One or more fields are empty");
         }else{
         noSwarms = Integer.valueOf(noSwarmTextField.getText());
         }
-        if(noParticleTextField.getText()==null){
+        if(noParticleTextField.getText().equals("")){
             noParticles=0;
         
         }else {
@@ -221,14 +225,15 @@ public class FXMLDocumentController  implements Initializable {
                   toolkit = Toolkit.getDefaultToolkit();
 		 timer = new Timer();
                  System.out.println("********************************************called once");
-	        timer.schedule(new CrunchifyReminder(maxim,popMngr,timer,costWebA,costWebB,costWebC,costWebD,costWebE,costWebF,viewsArray), 0, // initial delay
-				300);
+	        timer.schedule(new TimerTaskClass(maxim,popMngr,timer,costWebA,costWebB,costWebC,costWebD,costWebE,costWebF,viewsArray), 0, // initial delay
+				400);
              //   MainControllerPane mpc = new MainControllerPane(this.popMngr, timer, this.activeGraphicsPane);
 		
 	//	mainBorderPane.setLeft(mpc.getPane());
 		mainBorderPane.setCenter(this.activeGraphicsPane);
 		scene.setRoot(mainBorderPane);
 		stage.show();
+        }
                 
     }
     

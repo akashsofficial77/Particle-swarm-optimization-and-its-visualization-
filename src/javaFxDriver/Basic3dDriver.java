@@ -41,12 +41,6 @@ public class Basic3dDriver extends PopulationDriver {
 	private Cube goalCube = new Cube(20, 20, 20);
 	private int particleSize = 70;
 	
-	private double mousePosX;
-	private double mousePosY;
-	private double mouseOldX;
-	private double mouseOldY;
-	private double mouseDeltaX;
-	private double mouseDeltaY;
         private int noSwarms;
         private int noParticles;
         private double inertiaFactor;
@@ -138,8 +132,7 @@ public class Basic3dDriver extends PopulationDriver {
 
 	@Override
 	public void update (float elapsedTime,int flag, int maxim,int costWebA, int costWebB,int costWebC,int costWebD,int costWebE,int costWebF, int[] viewsArray) {
-               //int totParticleCnt = 0;
-             //  System.out.println("update method called");
+         
                 if(flag!=0){
 			multiswarm.mainLoop(maxim,costWebA,costWebB,costWebC,costWebD,costWebE,costWebF,viewsArray);
                         } 
@@ -151,7 +144,7 @@ public class Basic3dDriver extends PopulationDriver {
                          try{
 				Particle particle = p.getParticles()[(i - totParticleCnt)];
 				Cube cube = particles.get(i);
-				//int[] position = particle.getPosition().getVector();
+				
 				//---SET POSITION---//
                              //   Platform.runLater(() -> {
                                

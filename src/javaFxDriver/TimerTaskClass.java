@@ -16,7 +16,7 @@ import javafx.stage.Stage;
  *
  * @author Aditya
  */
-       public  class CrunchifyReminder extends TimerTask {
+       public  class TimerTaskClass extends TimerTask {
            int maxim;
            int flag;
            PopulationManager popMgr;
@@ -31,7 +31,7 @@ import javafx.stage.Stage;
            
            static int cnt = 0;
              static int cnt1 = 0;
-         public  CrunchifyReminder(int maxim,   PopulationManager pogMgr, Timer timer,int costWebA, int costWebB,int costWebC,int costWebD,int costWebE,int costWebF,int[] viewsArray)
+         public  TimerTaskClass(int maxim,   PopulationManager pogMgr, Timer timer,int costWebA, int costWebB,int costWebC,int costWebD,int costWebE,int costWebF,int[] viewsArray)
            {
                this.maxim=maxim;
                this.popMgr=pogMgr;
