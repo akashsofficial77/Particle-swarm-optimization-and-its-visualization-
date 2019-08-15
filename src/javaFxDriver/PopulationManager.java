@@ -25,9 +25,9 @@ public class PopulationManager {
 		return this.activeDriver;
 	}
 	
-	public  void update (float elapsedTime, int flag,int maxim) {
+	public  void update (float elapsedTime, int flag,int maxim,int costWebA, int costWebB,int costWebC,int costWebD,int costWebE,int costWebF,int[] viewsArray) {
 		if (this.activeDriver == null) return;
-		this.activeDriver.update(elapsedTime,flag, maxim);
+		this.activeDriver.update(elapsedTime,flag, maxim,costWebA,costWebB,costWebC,costWebD,costWebE,costWebF,viewsArray);
 	}
 	
 	public void setC1 (int popIndex, float val) {

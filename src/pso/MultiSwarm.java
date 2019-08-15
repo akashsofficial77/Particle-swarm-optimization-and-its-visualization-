@@ -88,7 +88,7 @@ public class MultiSwarm {
         */
     
         
-	public void mainLoop(int maxim) {
+	public void mainLoop(int maxim,int costWebA, int costWebB,int costWebC,int costWebD,int costWebE,int costWebF, int[] viewsArray) {
                
 		for (Swarm swarm : swarms) {
 			for (Particle particle : swarm.getParticles()) {
@@ -96,7 +96,7 @@ public class MultiSwarm {
 				long[] particleOldPosition = particle.getPosition().clone();
 
 				// Calculate the particle fitness.
-				particle.setFitness(fitnessFunction.getFitness(particleOldPosition,maxim));
+				particle.setFitness(fitnessFunction.getFitness(particleOldPosition,maxim,costWebA,costWebB,costWebC,costWebD,costWebE,costWebF,viewsArray));
 
 				// Check if a new best position has been found for the particle
 				// itself, within the swarm and the multiswarm.
@@ -160,7 +160,7 @@ public class MultiSwarm {
                                   series1.add(count,(position[0]+position[1]+position[2]+position[3]+position[4]+position[5])*10); 
                                     //JOptionPane.showMessageDialog(null,position[0]+","+position[1]+","+position[2]+","+position[3]+","+position[4]+","+position[5]);
                                    //System.out.println(al.get(xxx-1)[0]+","+al.get(xxx-1)[1]+","+al.get(xxx-1)[2]+","+al.get(xxx-1)[3]+","+al.get(xxx-1)[4]+","+al.get(xxx-1)[5]+",");
-                               }
+                               
                                
                                if(count==4000000-1)
                                {
