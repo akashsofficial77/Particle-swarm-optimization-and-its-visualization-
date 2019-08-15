@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
+import javafx.application.Platform;
 
 import pso.LolFitnessFunction;
 import pso.Particle;
@@ -187,13 +188,20 @@ public class Basic3dDriver extends PopulationDriver {
                     */    
                         
                      for (int i = totParticleCnt; i < totParticleCnt + p.getParticles().length; i++) {
+                         try{
 				Particle particle = p.getParticles()[(i - totParticleCnt)];
 				Cube cube = particles.get(i);
 				//int[] position = particle.getPosition().getVector();
 				//---SET POSITION---//
+                             //   Platform.runLater(() -> {
+                               
 				cube.translate(particle.getPosition()[0], particle.getPosition()[1], particle.getPosition()[2]);
 				//---SET COLOR---//
-				
+                             //   }  );
+                         }catch(Exception e){
+                             System.out.println(" Some issue in Java FX thread********************************************************************** ");
+                           
+                         }
 			}   
                         
                         totParticleCnt += p.getParticles().length;
