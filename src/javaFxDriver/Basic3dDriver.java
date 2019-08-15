@@ -72,34 +72,13 @@ public class Basic3dDriver extends PopulationDriver {
 		this.paramMult = new double[this.numDimensions];
 		Arrays.fill(this.paramMult, 1);
 		ss= multiswarm.getSwarm();
-		
-		//this.fitnessFunction = new FitnessDistance(new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0});
-		
-		/*//---POPULATION SETUP---//
-		for (int i = 0; i < this.numPopulations; i++) {
-			PsoConfigOptions options = new PsoConfigOptions();
-			options.c1 = 0.006f;
-			options.c2 = 0.001f;
-			options.speedLimit = 25;
-			//Population p = new Population(size, popSizes[i], fitnessFunction, options);
-			options.population = p;
-			this.opts.add(options);
-			this.populations.add(p);
-		}*/
                 root.getChildren().add(world);
                 this.buildCamera();
-		//this.buildBoundries(); 
-              /*  int i = 5;
-                while(i>0){
-                multiswarm.mainLoop(i);
-                i--;
-                }*/
                 this.buildParticles();  
                 this.scene = new SubScene(root, width, height, true, SceneAntialiasing.BALANCED);
 		this.scene.setFill(Color.color(0.85, 0.85, 1.0));
 		this.scene.setCamera(camera);
-                //root.getChildren().add(world);               
-		//---UI SETUP---//
+       
 		
 		
 	}
@@ -126,10 +105,9 @@ public class Basic3dDriver extends PopulationDriver {
 	private void buildParticles () {
 		for (Swarm p : ss) {
                    
-                    //System.out.println( "Color"+  sColor);
-                  //System.out.println("****************************"+p);
+            
 			for (Particle particle : p.getParticles()) {
-                           // System.out.println("****************************"+particle);
+                  
 				Color color = Color.color(
 					1,
 					 1,
@@ -159,34 +137,16 @@ public class Basic3dDriver extends PopulationDriver {
 	}
 
 	@Override
-	public void update (float elapsedTime,int flag, int maxim) {
+	public void update (float elapsedTime,int flag, int maxim,int costWebA, int costWebB,int costWebC,int costWebD,int costWebE,int costWebF, int[] viewsArray) {
                //int totParticleCnt = 0;
              //  System.out.println("update method called");
                 if(flag!=0){
-			multiswarm.mainLoop(maxim);
+			multiswarm.mainLoop(maxim,costWebA,costWebB,costWebC,costWebD,costWebE,costWebF,viewsArray);
                         } 
                 else{
                     int totParticleCnt = 0;
 		for (Swarm p : ss) {
-                        //System.out.println("Swarm"+p);
-                        
-                    /*    for (int i = 0; i<p.getParticles().length; i++) {
-                            
-				Particle particle = p.getParticles()[i];
-                                System.out.println(p.getSNumber()  +"  "+p);
-				Cube cube = particles.get(i);
-				//int[] position = particle.getPosition().getVector();
-				//---SET POSITION---//
-                                //System.out.println(flag +"        "+particle.getPosition()[0]+","+particle.getPosition()[1]+","+particle.getPosition()[2]+","+particle.getPosition()[3]+","+particle.getPosition()[4]+","+particle.getPosition()[5]);
-				cube.translate(particle.getPosition()[0], particle.getPosition()[1], particle.getPosition()[2]);
-				//---SET COLOR---//
-                                //System.out.println("translate");
-				
-			
-                            }
-                        
-                    */    
-                        
+    
                      for (int i = totParticleCnt; i < totParticleCnt + p.getParticles().length; i++) {
                          try{
 				Particle particle = p.getParticles()[(i - totParticleCnt)];
@@ -206,8 +166,7 @@ public class Basic3dDriver extends PopulationDriver {
                         
                         totParticleCnt += p.getParticles().length;
                         
-                        
-                        
+                         
                         }
 			
 			
@@ -237,16 +196,4 @@ public class Basic3dDriver extends PopulationDriver {
 		return "basic3D";
 	}
 	
-	/*
-	 * 3D camera rotate on mouse drag
-	 * from http://docs.oracle.com/javafx/8/3d_graphics/sampleapp.htm
-	 */
-	
-
-  /*  @Override
-    public void update(float elapsedTime) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-       multiswarm.mainLoop();
-    }*/
-
 }
