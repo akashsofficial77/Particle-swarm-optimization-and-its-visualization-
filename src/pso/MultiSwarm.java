@@ -17,12 +17,12 @@ public class MultiSwarm {
 
         long[] positionFixed=new long [10];
 	private Swarm[] swarms;
-        long[] output;
+        long[] output=new long [10];
 	private long[] bestPosition;
         long ff;
         long views;
-        long outViews=-999999999;
-        long outff=-999999999;
+        long outViews=-2147483648 ;
+        long outff=-2147483648 ;
 	private double bestFitness = Double.NEGATIVE_INFINITY;
 
 	private Random random = new Random();
@@ -99,7 +99,10 @@ public class MultiSwarm {
                                 position[5] += speed[5];
                                 count++;
                                 
-                                
+                                if(count%100000==0)
+                                {
+                                    System.out.println(count);
+                                }
                                      
                                 for(int uu=0;uu<position.length;uu++)
                                 {
@@ -117,12 +120,19 @@ public class MultiSwarm {
                                        {
                                        outViews=views;
                                        outff=ff;
-                                       output=positionFixed;
+                                       output[0]=positionFixed[0];
+                                       output[1]=positionFixed[1];
+                                       output[2]=positionFixed[2];
+                                       output[3]=positionFixed[3];
+                                       output[4]=positionFixed[4];
+                                       output[5]=positionFixed[5];
+                                       
+                                       System.out.println("XX"+count +"out"+outff+"  "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
                                        }
                                    }
                                   series.add(count,ff);
-                                  series1.add(ff,views);
-                               if(count==((swarms.length*swarms[0].getParticles().length*1000)/2)-1)
+                                  series1.add(maxim,views);
+                               if(count==((((swarms.length*swarms[0].getParticles().length*1000)/4))*0.75)-1)
                                {
                                    
                                    if(outViews<0 || outff<0)
@@ -132,6 +142,29 @@ public class MultiSwarm {
                                    
                                    else
                                    {
+                                       
+                                       
+                                        if(costWebA==0 && viewsArray[0]==0){
+                                            output[0]=0;
+           }
+                                        if(costWebB==0 && viewsArray[1]==0){
+                                            output[1]=0;
+           }
+                                        if(costWebC==0 && viewsArray[2]==0){
+                                            output[2]=0;
+           }
+                                        if(costWebD==0 && viewsArray[3]==0){
+                                            output[3]=0;
+           }
+                                        if(costWebE==0 && viewsArray[4]==0){
+                                            output[4]=0;
+           }
+                                        if(costWebF==0 && viewsArray[5]==0){
+                                            output[5]=0;
+           }
+                                       
+                                       
+                                       
                                   try{
                                   JOptionPane.showMessageDialog(null,"The max no of views are(try)"+outViews+"within the budget of"+outff+"having ads  "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
                                   }

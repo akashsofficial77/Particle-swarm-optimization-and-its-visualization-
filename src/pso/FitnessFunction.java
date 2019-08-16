@@ -15,6 +15,24 @@ public class FitnessFunction implements FitnessFunctionInterface {
 	@Override
 	public double getFitness(long[] particlePosition,int maxim,int costWebA, int costWebB,int costWebC,int costWebD,int costWebE,int costWebF, int[] viewsArray) {
 
+                if(costWebA==0 && viewsArray[0]==0){
+               particlePosition[0]=0;
+           }
+               if(costWebB==0 && viewsArray[1]==0){
+               particlePosition[1]=0;
+           }
+                   if(costWebC==0 && viewsArray[2]==0){
+               particlePosition[2]=0;
+           }
+                       if(costWebD==0 && viewsArray[3]==0){
+               particlePosition[3]=0;
+           }
+                           if(costWebE==0 && viewsArray[4]==0){
+               particlePosition[4]=0;
+           }
+                               if(costWebF==0 && viewsArray[5]==0){
+               particlePosition[5]=0;
+           }
 		long adA = particlePosition[0];
 		long adB = particlePosition[1];
 		long adC=particlePosition[2];
