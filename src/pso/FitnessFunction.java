@@ -15,110 +15,110 @@ public class FitnessFunction implements FitnessFunctionInterface {
 	@Override
 	public double getFitness(long[] particlePosition,int maxim,int costWebA, int costWebB,int costWebC,int costWebD,int costWebE,int costWebF, int[] viewsArray) {
 
-		long health = particlePosition[0];
-		long armor = particlePosition[1];
-		long x=particlePosition[2];
-                long x1=particlePosition[3];
-                long x2=particlePosition[4];
-                long x3=particlePosition[5];
+		long adA = particlePosition[0];
+		long adB = particlePosition[1];
+		long adC=particlePosition[2];
+                long adD=particlePosition[3];
+                long adE=particlePosition[4];
+                long adF=particlePosition[5];
                
 		// No negatives values accepted.
-		if (health < 0 && armor < 0 && x<0 && x1<0 && x2<0 && x3<0) {
-			return -(x*health*armor*x1*x2*x3);
+		if (adA < 0 && adB < 0 && adC<0 && adD<0 && adE<0 && adF<0) {
+			return -(adC*adA*adB*adD*adE*adF);
 		}
-                else if(health < 0 && armor < 0 && x<0){
-                    return (x*health*armor);
+                else if(adA < 0 && adB < 0 && adC<0){
+                    return (adC*adA*adB);
                 }
-                else if(health < 0 && armor < 0 && x1<0){
-                    return (health*armor*x1);
-                }else if (health < 0 && armor < 0 && x2<0){
-                    return (health*armor*x2);
-                }else if(health < 0 && armor < 0 && x3<0){
-                     return (health*armor*x3);
-                }else if(health < 0 && x<0 && x1<0){
-                    return(health*x*x1);
-                }else if(health < 0 && x<0 && x2<0){
-                    return(health*x*x2);
-                }else if(health < 0 && x<0 && x3<0){
-                    return(health*x*x3);
-                }else if(health < 0 && x1<0 && x2<0){
-                    return(health*x1*x2);
-                }else if(health < 0 && x1<0 && x3<0){
-                    return(health*x1*x3);
-                }else if(health<0 && x2<0 && x3<0){
-                    return(health*x2*x3);
+                else if(adA < 0 && adB < 0 && adD<0){
+                    return (adA*adB*adD);
+                }else if (adA < 0 && adB < 0 && adE<0){
+                    return (adA*adB*adE);
+                }else if(adA < 0 && adB < 0 && adF<0){
+                     return (adA*adB*adF);
+                }else if(adA < 0 && adC<0 && adD<0){
+                    return(adA*adC*adD);
+                }else if(adA < 0 && adC<0 && adE<0){
+                    return(adA*adC*adE);
+                }else if(adA < 0 && adC<0 && adF<0){
+                    return(adA*adC*adF);
+                }else if(adA < 0 && adD<0 && adE<0){
+                    return(adA*adD*adE);
+                }else if(adA < 0 && adD<0 && adF<0){
+                    return(adA*adD*adF);
+                }else if(adA<0 && adE<0 && adF<0){
+                    return(adA*adE*adF);
                 }
-                else if(armor < 0 && x<0 && x1<0){
-                    return(armor*x*x1);
-                }else if( armor < 0 && x<0 && x2<0){
-                    return(armor*x*x2);
-                }else if(armor < 0 && x<0 && x3<0){
-                    return(armor*x*x3);
-                }else if (armor < 0 && x1<0 && x2<0){
-                    return(armor*x1*x2);
-                }else if(armor < 0 && x1<0 && x3<0){
-                    return(armor*x1*x3);
-                }else if(armor < 0 && x2<0 && x3<0){
-                    return(armor*x2*x3);
-                }else if( x<0 && x1<0 && x2<0){
-                    return(x*x1*x2);
-                }else if(x<0 && x1<0 && x3<0){
-                     return(x*x1*x3);
-                }else if(x<0 && x2<0 && x3<0){
-                     return(x*x2*x3);
+                else if(adB < 0 && adC<0 && adD<0){
+                    return(adB*adC*adD);
+                }else if( adB < 0 && adC<0 && adE<0){
+                    return(adB*adC*adE);
+                }else if(adB < 0 && adC<0 && adF<0){
+                    return(adB*adC*adF);
+                }else if (adB < 0 && adD<0 && adE<0){
+                    return(adB*adD*adE);
+                }else if(adB < 0 && adD<0 && adF<0){
+                    return(adB*adD*adF);
+                }else if(adB < 0 && adE<0 && adF<0){
+                    return(adB*adE*adF);
+                }else if( adC<0 && adD<0 && adE<0){
+                    return(adC*adD*adE);
+                }else if(adC<0 && adD<0 && adF<0){
+                     return(adC*adD*adF);
+                }else if(adC<0 && adE<0 && adF<0){
+                     return(adC*adE*adF);
                 }
-                else if (health < 0 && x<0) {
-			return -(health*x);
-		}else if(health < 0 && x1<0){
-                    return -(health*x1);
-                }else if(health < 0 && x2<0){
-                    return -(health*x2);
-                }else if(health < 0 && x3<0){
-                    return -(health*x3);
-                }else if(armor < 0 && x1<0){
-                    return -(armor*x1);
-                }else if(armor < 0 && x2<0){
-                     return -(armor*x2);
-                }else if(armor < 0 && x3<0){
-                     return -(armor*x3);
-                }else if(x<0 && x1<0){
-                    return -(x*x1);
-                }else if(x<0 && x2<0){
-                    return -(x*x2);
-                }else if(x<0 && x3<0){
-                    return -(x*x3);
-                }else if(x1<0 && x2<0){
-                    return -(x1*x2);
-                }else if(x1<0 && x3<0){
-                    return -(x1*x3);
-                }else if(x2<0 && x3<0){
-                    return -(x2*x3);
+                else if (adA < 0 && adC<0) {
+			return -(adA*adC);
+		}else if(adA < 0 && adD<0){
+                    return -(adA*adD);
+                }else if(adA < 0 && adE<0){
+                    return -(adA*adE);
+                }else if(adA < 0 && adF<0){
+                    return -(adA*adF);
+                }else if(adB < 0 && adD<0){
+                    return -(adB*adD);
+                }else if(adB < 0 && adE<0){
+                     return -(adB*adE);
+                }else if(adB < 0 && adF<0){
+                     return -(adB*adF);
+                }else if(adC<0 && adD<0){
+                    return -(adC*adD);
+                }else if(adC<0 && adE<0){
+                    return -(adC*adE);
+                }else if(adC<0 && adF<0){
+                    return -(adC*adF);
+                }else if(adD<0 && adE<0){
+                    return -(adD*adE);
+                }else if(adD<0 && adF<0){
+                    return -(adD*adF);
+                }else if(adE<0 && adF<0){
+                    return -(adE*adF);
                 }
-                else if (armor < 0 && x<0) {
-			return -(armor*x);
-		} else if (health < 0 && armor<0) {
-			return -(health*armor);
-		} else if (health < 0 ) {
-			return (health);
-		} else if (armor<0) {
-			return armor;
-		} else if (x<0) {
-			return x;
-		} else if(x1<0){
-                    return x1;
-                }else if(x2<0){
-                    return x2;
-                }else if(x3<0){
-                    return x3;
+                else if (adB < 0 && adC<0) {
+			return -(adB*adC);
+		} else if (adA < 0 && adB<0) {
+			return -(adA*adB);
+		} else if (adA < 0 ) {
+			return adA;
+		} else if (adB<0) {
+			return adB;
+		} else if (adC<0) {
+			return adC;
+		} else if(adD<0){
+                    return adD;
+                }else if(adE<0){
+                    return adE;
+                }else if(adF<0){
+                    return adF;
                 }
 
 		
-		double cost = (health * costWebA) + (armor * costWebB)+(x*costWebC)+(x1*costWebD)+(x2*costWebE)+(x3*costWebF);
+		double cost = (adA * costWebA) + (adB * costWebB)+(adC*costWebC)+(adD*costWebD)+(adE*costWebE)+(adF*costWebF);
         if (cost > maxim) {
             return maxim - cost;
         } else {
         
-            long fitness = health*viewsArray[0]+armor*viewsArray[1]+x*viewsArray[2]+(x1*viewsArray[3])+(x2*viewsArray[4])+(x3*viewsArray[5]);
+            long fitness = adA*viewsArray[0]+adB*viewsArray[1]+adC*viewsArray[2]+(adD*viewsArray[3])+(adE*viewsArray[4])+(adF*viewsArray[5]);
             return fitness;
         }
 	}

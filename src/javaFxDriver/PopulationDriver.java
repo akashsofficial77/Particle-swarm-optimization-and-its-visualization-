@@ -16,8 +16,7 @@ public abstract class PopulationDriver {
 	protected FitnessFunction fitnessFunction;
 	protected ArrayList<PsoConfigOptions> opts = new ArrayList<PsoConfigOptions>();
 	protected ArrayList<Swarm> populations = new ArrayList<Swarm>();
-	
-	protected int numDimensions = 0; //Number of dimensions to represent
+        protected int numDimensions = 0; //Number of dimensions to represent
 	protected double[] paramMult;	 //individual parameter multipliers
 	protected String[] paramList;	 //parameter labels
 	protected int numPopulations;	 //number of populations

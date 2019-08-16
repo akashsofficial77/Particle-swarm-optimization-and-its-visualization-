@@ -37,6 +37,8 @@ public class MultiSwarm {
         private static  int count=0 ;
    
          XYSeriesCollection dataset = new XYSeriesCollection();
+	 XYSeries series = new XYSeries("Graphical Analysis");
+         XYSeriesCollection dataset1 = new XYSeriesCollection();
 	 XYSeries series1 = new XYSeries("Graphical Analysis");
         
 
@@ -97,6 +99,7 @@ public class MultiSwarm {
                                 position[5] += speed[5];
                                 count++;
                                    ff= (position[0] * costWebA) + (position[1] * costWebB)+(position[2]*costWebC)+(position[3]*costWebD)+(position[4]*costWebE)+(position[5]*costWebF);
+                                   //System.out.println(position[0]+","+position[1]+","+position[2]+","position[0]+","position[0]+","position[0]+",");
                                    views = (position[0] * viewsArray[0]) + (position[1] * viewsArray[1])+(position[2]*viewsArray[2])+(position[3]*viewsArray[3])+(position[4]*viewsArray[4])+(position[5]*viewsArray[5]);
                                    if((maxim-ff)<(maxim-outff) && (maxim-ff)>=0  && position[0]>0 && position[1]>0 && position[2]>0 && position[3]>0 && position[4]>0 && position[5]>0 )
                                    {
@@ -107,19 +110,30 @@ public class MultiSwarm {
                                        output=particle.getPosition();
                                        }
                                    }
-                                  series1.add(count,(position[0]+position[1]+position[2]+position[3]+position[4]+position[5])*10); 
+                                  series.add(ff,views); 
+                                //  series1.add(count,views); 
                                if(count==((swarms.length*swarms[0].getParticles().length*1000)/2)-1)
                                {
-                                  
+                                  try{
                                   JOptionPane.showMessageDialog(null,outViews+" "+outff+"   "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
-                                   dataset.addSeries(series1);
+                                   dataset.addSeries(series);
+                                 //  dataset1.addSeries(series1);
                                    Chart chart = new Chart(
-                                   "Element No Vs Time Required" ,
-                                   "Element No  vs Time Required", dataset);
+                                   "Cost VS No of Iterations" ,
+                                   "Cost VS No of Iterations", dataset);
                                    chart.pack( );
                               
                                    chart.setVisible( true ); 
+                                  /* Chart chart1 = new Chart(
+                                   "No of Views VS No of Iterations" ,
+                                   "No of Views  VS No of Iterations", dataset);
+                                   chart1.pack( );
+                              
+                                   chart1.setVisible( true ); */
                                    break;
+                                  }catch(Exception e){
+                                      System.out.println(position[0]+","+position[1]+","+position[2]+","+position[3]+","+position[4]+","+position[5]);
+                                  }
                                }
                                   speed[0] = getNewParticleSpeedForIndex(particle, swarm, 0);
                                   speed[1] = getNewParticleSpeedForIndex(particle, swarm, 1);
