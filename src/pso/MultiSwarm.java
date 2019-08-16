@@ -15,7 +15,7 @@ import org.jfree.data.xy.XYSeriesCollection;
  */
 public class MultiSwarm {
 
-        
+        long[] positionFixed=new long [10];
 	private Swarm[] swarms;
         long[] output;
 	private long[] bestPosition;
@@ -98,11 +98,21 @@ public class MultiSwarm {
                                 position[4] += speed[4];
                                 position[5] += speed[5];
                                 count++;
-                                   ff= (position[0] * costWebA) + (position[1] * costWebB)+(position[2]*costWebC)+(position[3]*costWebD)+(position[4]*costWebE)+(position[5]*costWebF);
-                                   //System.out.println(position[0]+","+position[1]+","+position[2]+","position[0]+","position[0]+","position[0]+",");
-                                   views = (position[0] * viewsArray[0]) + (position[1] * viewsArray[1])+(position[2]*viewsArray[2])+(position[3]*viewsArray[3])+(position[4]*viewsArray[4])+(position[5]*viewsArray[5]);
-                                   if((maxim-ff)<(maxim-outff) && (maxim-ff)>=0  && position[0]>0 && position[1]>0 && position[2]>0 && position[3]>0 && position[4]>0 && position[5]>0 )
-                                   {
+                                
+                                
+                                     
+                                for(int uu=0;uu<position.length;uu++)
+                                {
+                                    positionFixed[uu]=position[uu];
+                                    if(positionFixed[uu]<0)
+                                        positionFixed[uu]=0;
+                                    
+                                }
+                                
+                                   ff= (positionFixed[0] * costWebA) + (positionFixed[1] * costWebB)+(positionFixed[2]*costWebC)+(positionFixed[3]*costWebD)+(positionFixed[4]*costWebE)+(positionFixed[5]*costWebF);
+                                   views = (positionFixed[0] * viewsArray[0]) + (positionFixed[1] * viewsArray[1])+(positionFixed[2]*viewsArray[2])+(positionFixed[3]*viewsArray[3])+(positionFixed[4]*viewsArray[4])+(positionFixed[5]*viewsArray[5]);
+                                   if((maxim-ff)<(maxim-outff) && (maxim-ff)>=0 )
+                                    {
                                        if(outViews<views)
                                        {
                                        outViews=views;
@@ -110,14 +120,19 @@ public class MultiSwarm {
                                        output=particle.getPosition();
                                        }
                                    }
-                                  series.add(ff,views); 
-                                //  series1.add(count,views); 
+                                  series1.add(count,(positionFixed[0]+positionFixed[1]+positionFixed[2]+positionFixed[3]+positionFixed[4]+positionFixed[5])*10); 
                                if(count==((swarms.length*swarms[0].getParticles().length*1000)/2)-1)
                                {
                                   try{
                                   JOptionPane.showMessageDialog(null,outViews+" "+outff+"   "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
-                                   dataset.addSeries(series);
-                                 //  dataset1.addSeries(series1);
+                                  }
+                                  catch(Exception e)
+                                  {
+                                      JOptionPane.showMessageDialog(null,outViews+" "+outff+"  "+positionFixed[0]+","+positionFixed[1]+","+positionFixed[2]+","+positionFixed[3]+","+positionFixed[4]+","+positionFixed[5]);
+                                  
+                                      System.out.println(positionFixed[0]+","+positionFixed[1]+","+positionFixed[2]+","+positionFixed[3]+","+positionFixed[4]+","+positionFixed[5]);
+                                  }
+                                  dataset.addSeries(series1);
                                    Chart chart = new Chart(
                                    "Cost VS No of Iterations" ,
                                    "Cost VS No of Iterations", dataset);
@@ -131,9 +146,7 @@ public class MultiSwarm {
                               
                                    chart1.setVisible( true ); */
                                    break;
-                                  }catch(Exception e){
-                                      System.out.println(position[0]+","+position[1]+","+position[2]+","+position[3]+","+position[4]+","+position[5]);
-                                  }
+                                  
                                }
                                   speed[0] = getNewParticleSpeedForIndex(particle, swarm, 0);
                                   speed[1] = getNewParticleSpeedForIndex(particle, swarm, 1);
