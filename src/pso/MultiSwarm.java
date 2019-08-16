@@ -124,6 +124,14 @@ public class MultiSwarm {
                                   series1.add(ff,views);
                                if(count==((swarms.length*swarms[0].getParticles().length*1000)/2)-1)
                                {
+                                   
+                                   if(outViews<0 || outff<0)
+                                   {
+                                       JOptionPane.showMessageDialog(null,"Try again with more number of swamrs");
+                                   }
+                                   
+                                   else
+                                   {
                                   try{
                                   JOptionPane.showMessageDialog(null,"The max no of views are(try)"+outViews+"within the budget of"+outff+"having ads  "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
                                   }
@@ -148,6 +156,7 @@ public class MultiSwarm {
                               
                                    chart1.setVisible( true ); 
                                    break;
+                                   }
                                   
                                }
                                   speed[0] = getNewParticleSpeedForIndex(particle, swarm, 0);

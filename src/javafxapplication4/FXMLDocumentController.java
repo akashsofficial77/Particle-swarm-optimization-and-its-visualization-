@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -81,6 +82,8 @@ public class FXMLDocumentController  implements Initializable {
     private TextField viewFTextField;
     @FXML
     private TextField viewATextField;
+    @FXML
+    private Button button;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
