@@ -7,7 +7,7 @@ package javafxapplication4;
 
 
 import java.util.Timer;
-import javaFxDriver.Basic3dDriver;
+import javaFxDriver.Animation;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 public class JavaFXApplication4 extends Application {
     
        int maxim=5000;
-       Basic3dDriver basic2D;
+       Animation basic2D;
       
        Timer timer;
       

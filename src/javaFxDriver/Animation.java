@@ -21,7 +21,7 @@ import javafx.scene.paint.PhongMaterial;
 import javafx.scene.SceneAntialiasing;
 import javax.swing.Timer;
 
-public class Basic3dDriver extends PopulationDriver {
+public class Animation extends PopulationDriver {
          int sColor=1;
 	private Group root = new Group();
 	private Group boundryGroup = new Group();
@@ -51,7 +51,7 @@ public class Basic3dDriver extends PopulationDriver {
          MultiSwarm multiswarm;
         private Swarm[] ss;
 	
-	public Basic3dDriver(int[] searchSpaceDimensions, int[] initGoal, int numPopulations, int[] popSizes, int noSwarms, int noParticle,double inertiaFactor, double cw, double sw, double gw) {
+	public Animation(int[] searchSpaceDimensions, int[] initGoal, int numPopulations, int[] popSizes, int noSwarms, int noParticle,double inertiaFactor, double cw, double sw, double gw) {
 		super(searchSpaceDimensions, initGoal, numPopulations, popSizes);
                 this.noSwarms = noSwarms;
                 this.noParticles = noParticles;

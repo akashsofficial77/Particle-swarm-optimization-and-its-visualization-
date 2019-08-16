@@ -9,7 +9,7 @@ import java.awt.Toolkit;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Timer;
-import javaFxDriver.Basic3dDriver;
+import javaFxDriver.Animation;
 import javaFxDriver.TimerTaskClass;
 
 import javaFxDriver.PopulationDriver;
@@ -40,7 +40,7 @@ public class FXMLDocumentController  implements Initializable {
     private BorderPane mainBorderPane = new BorderPane();
     private BorderPane activeGraphicsPane = new BorderPane();
     private PopulationManager popMngr = new PopulationManager();
-    Basic3dDriver basic3D;
+    Animation basic3D;
     Timer timer;
     private int noSwarms;
     private int noParticles;
@@ -186,7 +186,7 @@ public class FXMLDocumentController  implements Initializable {
 	stage.setTitle("Particle Swarm Optimization Visualization");
         int[] searchSpace = new int[]{900, 675, 255, 255, 255};
 	int[] initGoal = new int[]{255, 255, 255, 255, 255};
-	PopulationDriver basic3D = new Basic3dDriver(searchSpace, initGoal, -1, new int[100],noSwarms,noParticles,inertiaFactor,cw,sw,gw);
+	PopulationDriver basic3D = new Animation(searchSpace, initGoal, -1, new int[100],noSwarms,noParticles,inertiaFactor,cw,sw,gw);
         this.popMngr.addDriver("basic3D", basic3D);
 	this.popMngr.setActiveDriver("basic3D");
 		
@@ -202,14 +202,13 @@ public class FXMLDocumentController  implements Initializable {
         this.lastTime = System.nanoTime();
 	timer = new Timer();
         //System.out.println("********************************************called once");
-	timer.schedule(new TimerTaskClass(maxim,popMngr,timer,costWebA,costWebB,costWebC,costWebD,costWebE,costWebF,viewsArray), 0,400);
+	timer.schedule(new TimerTaskClass(maxim,popMngr,timer,costWebA,costWebB,costWebC,costWebD,costWebE,costWebF,viewsArray), 0,500);
 	mainBorderPane.setCenter(this.activeGraphicsPane);
 	scene.setRoot(mainBorderPane);
 	stage.show();
         }
                 
-    }}}}}}}}
-        }
+    }}}}}}}}}
         }
         }
         }

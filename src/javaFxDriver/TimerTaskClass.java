@@ -7,10 +7,8 @@ package javaFxDriver;
 
 import java.util.Timer;
 import java.util.TimerTask;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
+import java.util.concurrent.TimeUnit;
+
 
 /**
  *
@@ -48,12 +46,17 @@ public  class TimerTaskClass extends TimerTask {
 
             Thread t2 = new Thread(){
                     public void run(){
+                        try{
                         while(true){
+                            t2.sleep(100);
 		            float elapsedTime = 0;
                             flag=0;
                             popMgr.update(elapsedTime, flag, maxim,costWebA,costWebB,costWebC,costWebD,costWebE,costWebF,viewsArray);
-				
-	                }           
+		           
+	                }  
+                        }catch(Exception e){
+                            System.out.println("exception in javafx");
+                        }
                     }
  };
 
