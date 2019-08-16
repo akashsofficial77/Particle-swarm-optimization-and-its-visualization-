@@ -30,7 +30,7 @@ public class Animation extends PopulationDriver {
 	private Xform cameraXform = new Xform();
 	private Xform cameraXform2 = new Xform();
 	private Xform cameraXform3 = new Xform();
-	private double cameraDistance = 2500;
+	private double cameraDistance =6000;
 
 	private Xform particleGroup = new Xform();
 	private ArrayList<Cube> particles = new ArrayList<Cube>();

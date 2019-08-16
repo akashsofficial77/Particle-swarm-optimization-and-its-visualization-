@@ -127,11 +127,13 @@ public class MultiSwarm {
                                        output[4]=positionFixed[4];
                                        output[5]=positionFixed[5];
                                        
+                                       series1.add(outff,outViews);
+                                       
                                        System.out.println("XX"+count +"out"+outff+"  "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
                                        }
                                    }
                                   series.add(count,ff);
-                                  series1.add(maxim,views);
+                                  
                                if(count==((((swarms.length*swarms[0].getParticles().length*1000)/4))*0.75)-1)
                                {
                                    
@@ -166,11 +168,11 @@ public class MultiSwarm {
                                        
                                        
                                   try{
-                                  JOptionPane.showMessageDialog(null,"The max no of views are(try)"+outViews+"within the budget of"+outff+"having ads  "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
+                                  JOptionPane.showMessageDialog(null,"The max no of views are "+outViews+" within the budget of "+outff+" having ads  "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
                                   }
                                   catch(Exception e)
                                   {
-                                      JOptionPane.showMessageDialog(null,"The max no of views are(catch)"+outViews+"within the budget of "+outff+"having ads  "+positionFixed[0]+","+positionFixed[1]+","+positionFixed[2]+","+positionFixed[3]+","+positionFixed[4]+","+positionFixed[5]);
+                                      JOptionPane.showMessageDialog(null,"The max no of Views are "+outViews+" within the budget of "+outff+" having ads  "+positionFixed[0]+","+positionFixed[1]+","+positionFixed[2]+","+positionFixed[3]+","+positionFixed[4]+","+positionFixed[5]);
                                   
                                       System.out.println(positionFixed[0]+","+positionFixed[1]+","+positionFixed[2]+","+positionFixed[3]+","+positionFixed[4]+","+positionFixed[5]);
                                   }
