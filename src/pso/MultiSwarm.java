@@ -117,34 +117,36 @@ public class MultiSwarm {
                                        {
                                        outViews=views;
                                        outff=ff;
-                                       output=particle.getPosition();
+                                       output=positionFixed;
                                        }
                                    }
-                                  series1.add(count,(positionFixed[0]+positionFixed[1]+positionFixed[2]+positionFixed[3]+positionFixed[4]+positionFixed[5])*10); 
+                                  series.add(count,ff);
+                                  series1.add(ff,views);
                                if(count==((swarms.length*swarms[0].getParticles().length*1000)/2)-1)
                                {
                                   try{
-                                  JOptionPane.showMessageDialog(null,outViews+" "+outff+"   "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
+                                  JOptionPane.showMessageDialog(null,"The max no of views are(try)"+outViews+"within the budget of"+outff+"having ads  "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
                                   }
                                   catch(Exception e)
                                   {
-                                      JOptionPane.showMessageDialog(null,outViews+" "+outff+"  "+positionFixed[0]+","+positionFixed[1]+","+positionFixed[2]+","+positionFixed[3]+","+positionFixed[4]+","+positionFixed[5]);
+                                      JOptionPane.showMessageDialog(null,"The max no of views are(catch)"+outViews+"within the budget of "+outff+"having ads  "+positionFixed[0]+","+positionFixed[1]+","+positionFixed[2]+","+positionFixed[3]+","+positionFixed[4]+","+positionFixed[5]);
                                   
                                       System.out.println(positionFixed[0]+","+positionFixed[1]+","+positionFixed[2]+","+positionFixed[3]+","+positionFixed[4]+","+positionFixed[5]);
                                   }
-                                  dataset.addSeries(series1);
+                                  dataset.addSeries(series);
+                                  dataset1.addSeries(series1);
                                    Chart chart = new Chart(
                                    "Cost VS No of Iterations" ,
                                    "Cost VS No of Iterations", dataset);
                                    chart.pack( );
                               
                                    chart.setVisible( true ); 
-                                  /* Chart chart1 = new Chart(
-                                   "No of Views VS No of Iterations" ,
-                                   "No of Views  VS No of Iterations", dataset);
+                                   Chart chart1 = new Chart(
+                                   "No of Views VS Cost" ,
+                                   "No of Views  VS Cost", dataset1);
                                    chart1.pack( );
                               
-                                   chart1.setVisible( true ); */
+                                   chart1.setVisible( true ); 
                                    break;
                                   
                                }

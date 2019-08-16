@@ -202,7 +202,7 @@ public class FXMLDocumentController  implements Initializable {
         this.lastTime = System.nanoTime();
 	timer = new Timer();
         //System.out.println("********************************************called once");
-	timer.schedule(new TimerTaskClass(maxim,popMngr,timer,costWebA,costWebB,costWebC,costWebD,costWebE,costWebF,viewsArray), 0,500);
+	timer.schedule(new TimerTaskClass(maxim,popMngr,timer,costWebA,costWebB,costWebC,costWebD,costWebE,costWebF,viewsArray), 0,600);
 	mainBorderPane.setCenter(this.activeGraphicsPane);
 	scene.setRoot(mainBorderPane);
 	stage.show();
