@@ -25,7 +25,7 @@ public class Chart extends JFrame {
 	      super(applicationTitle);
 	      JFreeChart lineChart = ChartFactory.createXYLineChart(
 	         chartTitle,
-	         "No of Iterations","Budget/Views",
+	         "No of Iterations/Cost","Budget/Views",
 	         dataset,
 	         PlotOrientation.VERTICAL,
 	         true,true,false);

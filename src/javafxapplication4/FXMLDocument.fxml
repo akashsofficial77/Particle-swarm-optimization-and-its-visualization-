@@ -9,66 +9,96 @@
 
 <AnchorPane id="AnchorPane" prefHeight="680.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication4.FXMLDocumentController">
     <children>
-        <Button fx:id="button" layoutX="214.0" layoutY="315.0" onMouseClicked="#handleButtonAction" text="Click Me!" />
-      <TextField fx:id="noSwarmTextField" layoutX="214.0" layoutY="79.0" prefHeight="25.0" prefWidth="85.0" />
-      <TextField fx:id="noParticleTextField" layoutX="214.0" layoutY="127.0" prefHeight="25.0" prefWidth="85.0" />
-      <TextField fx:id="budgetTextField" layoutX="214.0" layoutY="169.0" prefHeight="25.0" prefWidth="85.0" />
-      <TextField fx:id="costCTxtField" layoutX="549.0" layoutY="126.0" prefHeight="25.0" prefWidth="77.0" />
-      <TextField fx:id="costBTxtField" layoutX="549.0" layoutY="78.0" prefHeight="25.0" prefWidth="77.0" />
-      <TextField fx:id="costDTxtField" layoutX="549.0" layoutY="168.0" prefHeight="25.0" prefWidth="77.0" />
-      <TextField fx:id="costETxtField" layoutX="549.0" layoutY="212.0" prefHeight="25.0" prefWidth="77.0" />
-      <TextField fx:id="costATxtField" layoutX="214.0" layoutY="213.0" prefHeight="25.0" prefWidth="54.0" />
-      <Label layoutX="83.0" layoutY="127.0" text="No of Particles">
+        <Button fx:id="button" layoutX="319.0" layoutY="576.0" onMouseClicked="#handleButtonAction" text="Submit" />
+      <TextField fx:id="noSwarmTextField" layoutX="362.0" layoutY="154.0" prefHeight="25.0" prefWidth="85.0" />
+      <TextField fx:id="noParticleTextField" layoutX="362.0" layoutY="202.0" prefHeight="25.0" prefWidth="85.0" />
+      <TextField fx:id="budgetTextField" layoutX="362.0" layoutY="244.0" prefHeight="25.0" prefWidth="85.0" />
+      <TextField fx:id="costCTxtField" layoutX="285.0" layoutY="403.0" prefHeight="27.0" prefWidth="54.0" />
+      <TextField fx:id="costBTxtField" layoutX="109.0" layoutY="498.0" prefHeight="27.0" prefWidth="54.0" />
+      <TextField fx:id="costDTxtField" layoutX="285.0" layoutY="498.0" prefHeight="27.0" prefWidth="54.0" />
+      <TextField fx:id="costETxtField" layoutX="465.0" layoutY="403.0" prefHeight="27.0" prefWidth="54.0" />
+      <TextField fx:id="costATxtField" layoutX="109.0" layoutY="403.0" prefHeight="25.0" prefWidth="54.0" />
+      <Label layoutX="231.0" layoutY="202.0" text="No of Particles">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="85.0" layoutY="174.0" text="Total Budget">
+      <Label layoutX="233.0" layoutY="249.0" text="Total Budget">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="338.0" layoutY="81.0" text="Cost &amp; views of ad for Web B">
+      <Label layoutX="120.0" layoutY="465.0" text="Cost">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="85.0" layoutY="81.0" text="No of Swarms">
+      <Label layoutX="233.0" layoutY="156.0" text="No of Swarms">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="338.0" layoutY="127.0" text="Cost &amp; views of ad for Web C">
+      <Label layoutX="120.0" layoutY="372.0" text="Cost">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="338.0" layoutY="174.0" text="Cost &amp; views of ad for Web D">
+      <TextField fx:id="costFTxtField" layoutX="465.0" layoutY="498.0" prefHeight="27.0" prefWidth="54.0" />
+      <TextField fx:id="viewBTextField" layoutX="177.0" layoutY="498.0" prefHeight="27.0" prefWidth="54.0" />
+      <TextField fx:id="viewCTextField" layoutX="354.0" layoutY="403.0" prefHeight="27.0" prefWidth="54.0" />
+      <TextField fx:id="viewDTextField" layoutX="354.0" layoutY="498.0" prefHeight="27.0" prefWidth="54.0" />
+      <TextField fx:id="viewETextField" layoutX="533.0" layoutY="403.0" prefHeight="27.0" prefWidth="54.0" />
+      <TextField fx:id="viewFTextField" layoutX="533.0" layoutY="498.0" prefHeight="27.0" prefWidth="54.0" />
+      <TextField fx:id="viewATextField" layoutX="177.0" layoutY="403.0" prefHeight="25.0" prefWidth="54.0" />
+      <Label layoutX="187.0" layoutY="372.0" text="View">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="339.0" layoutY="215.0" text="Cost &amp; views of ad for Web E">
+      <Label layoutX="187.0" layoutY="465.0" text="View">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="18.0" layoutY="215.0" text="Cost &amp; views of ad for Web A">
+      <Label layoutX="364.0" layoutY="372.0" text="View">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="340.0" layoutY="248.0" text="Cost &amp; views of ad for Web F">
+      <Label layoutX="296.0" layoutY="372.0" text="Cost">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="costFTxtField" layoutX="549.0" layoutY="246.0" prefHeight="25.0" prefWidth="77.0" />
-      <TextField fx:id="viewBTextField" layoutX="636.0" layoutY="79.0" prefHeight="25.0" prefWidth="77.0" />
-      <TextField fx:id="viewCTextField" layoutX="636.0" layoutY="127.0" prefHeight="25.0" prefWidth="77.0" />
-      <TextField fx:id="viewDTextField" layoutX="636.0" layoutY="168.0" prefHeight="25.0" prefWidth="77.0" />
-      <TextField fx:id="viewETextField" layoutX="636.0" layoutY="213.0" prefHeight="25.0" prefWidth="77.0" />
-      <TextField fx:id="viewFTextField" layoutX="636.0" layoutY="246.0" prefHeight="25.0" prefWidth="77.0" />
-      <TextField fx:id="viewATextField" layoutX="272.0" layoutY="213.0" prefHeight="25.0" prefWidth="54.0" />
+      <Label layoutX="543.0" layoutY="372.0" text="View">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="476.0" layoutY="372.0" text="Cost">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="364.0" layoutY="465.0" text="View">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="296.0" layoutY="465.0" text="Cost">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="543.0" layoutY="465.0" text="View">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="476.0" layoutY="465.0" text="Cost">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
