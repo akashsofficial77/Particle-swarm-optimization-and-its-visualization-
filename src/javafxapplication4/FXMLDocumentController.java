@@ -92,6 +92,7 @@ public class FXMLDocumentController  implements Initializable {
    
     @FXML
     private void handleButtonAction(MouseEvent event) {
+        try {
         if(noSwarmTextField.getText().equals("")||noParticleTextField.getText().equals("")||
                 costCTxtField.getText().equals("")||costDTxtField.getText().equals("")||costETxtField.getText().equals("")||
                 costFTxtField.getText().equals("")||costATxtField.getText().equals("")||costBTxtField.getText().equals("")
@@ -176,6 +177,7 @@ public class FXMLDocumentController  implements Initializable {
           JOptionPane.showMessageDialog(null,"Enter a positive value for views");
         }else{
             viewsArray[5] = Integer.valueOf(viewFTextField.getText());
+       
         
                   
         double inertiaFactor = 0.79;
@@ -218,6 +220,9 @@ public class FXMLDocumentController  implements Initializable {
         }
         }
         }
+         }catch(Exception e){
+               System.out.println("enter proper numeric values"); 
+                }
         
         
     } 
