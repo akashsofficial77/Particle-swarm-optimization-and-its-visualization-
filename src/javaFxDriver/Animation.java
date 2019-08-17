@@ -97,15 +97,17 @@ public class Animation extends PopulationDriver {
 
 
 	private void buildParticles () {
+            double colors = 0.01;
 		for (Swarm p : ss) {
+                    if(colors>0.8)colors=0.1;
                    
             
 			for (Particle particle : p.getParticles()) {
                   
 				Color color = Color.color(
-					1,
-					 1,
-					1
+					colors,
+					 0.1+colors,
+					0.19+colors
 				);
 				Cube box = new Cube(this.particleSize, this.particleSize, this.particleSize, color, color);
 				box.translate(
@@ -115,7 +117,7 @@ public class Animation extends PopulationDriver {
 				);
 				particles.add(box);
 			}
-                             sColor++;
+                             colors=colors+0.1;
 		}
            
 	

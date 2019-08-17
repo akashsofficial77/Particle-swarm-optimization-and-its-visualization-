@@ -129,7 +129,7 @@ public class MultiSwarm {
                                        
                                        series1.add(outff,outViews);
                                        
-                                       System.out.println("XX"+count +"out"+outff+"  "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
+                                       System.out.println("No of iterations is "+count +" and cost is "+outff+" for ads having  "+output[0]+","+output[1]+","+output[2]+","+output[3]+","+output[4]+","+output[5]);
                                        }
                                    }
                                   series.add(count,ff);
